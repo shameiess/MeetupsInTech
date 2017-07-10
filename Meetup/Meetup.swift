@@ -37,6 +37,7 @@ class Meetup: NSObject {
         self.latitude = latitude
         self.longitude = longitude
     }
+    
     class func meetupURLBuilder(lat: String, lon: String, topic: String) -> String {
         let url = "https://api.meetup.com/2/open_events?&sign=true&photo-host=public&lat=" + lat + "&topic=" + topic + "&lon=" + lon + "&key=266354163543e605a2ee2a23306e4e"
         return url
@@ -58,9 +59,8 @@ class Meetup: NSObject {
                 let address = results[i]["venue"]["address_1"].string
                 let latitude = results[i]["venue"]["lat"].double
                 let longitude = results[i]["venue"]["lon"].double
-        
-                let meetup = Meetup(meetupId: meetupid, meetupName: meetupName, meetupDescription: meetupDescription, meetupUrl: meetupUrl, distance: distance, timestamp: timestamp, address: address, latitude: latitude, longitude: longitude)
                 
+                let meetup = Meetup(meetupId: meetupid, meetupName: meetupName, meetupDescription: meetupDescription, meetupUrl: meetupUrl, distance: distance, timestamp: timestamp, address: address, latitude: latitude, longitude: longitude)
                 meetups.append(meetup)
             }
         }
@@ -84,7 +84,7 @@ class Meetup: NSObject {
                 let comment = results[i]["comment"].string
                 let time = results[i]["time"].double
                 let member_name = results[i]["member_name"].string
-
+                
                 let meetupComment = MeetupComment(event_id: event_id, comment: comment, time: time, member_name: member_name)
                 comments.append(meetupComment)
             }

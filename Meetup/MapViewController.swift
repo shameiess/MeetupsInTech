@@ -1,5 +1,5 @@
 //
-//  MapView.swift
+//  MapViewController.swift
 //  Meetup
 //
 //  Created by Kevin Nguyen on 11/16/16.
@@ -15,7 +15,6 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    
     var meetups = [Meetup]()
     
     override func viewDidLoad() {
@@ -28,7 +27,6 @@ class MapViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         if (CLLocationManager.authorizationStatus() == .notDetermined) {
             locationManager.requestAlwaysAuthorization()
-            locationManager.requestWhenInUseAuthorization()
         }
         locationManager.startUpdatingLocation()
         
@@ -36,26 +34,30 @@ class MapViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.refreshTopic), name: .updateTopic, object: nil)
     }
     
+    func centerMapByCurrentLocation(sender: AnyObject) {
+        if let location = self.locationManager.location {
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+            self.mapView.setRegion(region, animated: true)
+        }
+    }
+    
     func refreshTopic(notification: Notification) {
         let annotationsToRemove = self.mapView.annotations.filter { $0 !== self.mapView.userLocation }
         mapView.removeAnnotations(annotationsToRemove)
         
         let topic = notification.userInfo?["topic"]
-        let lat = locationManager.location?.coordinate.latitude.description
-        let lon = locationManager.location?.coordinate.longitude.description
-        let url = Meetup.meetupURLBuilder(lat: lat!, lon: lon!, topic: topic as! String)
+        guard let lat = locationManager.location?.coordinate.latitude.description else {return}
+        guard let lon = locationManager.location?.coordinate.longitude.description else {return}
+        let url = Meetup.meetupURLBuilder(lat: lat, lon: lon, topic: topic as! String)
         MeetupClient.requestGETURL(url, success: {
             (JSONResponse) -> Void in
             self.meetups = Meetup.meetupsFromJSON(json: JSONResponse)!
             for meetup in self.meetups {
                 self.drawMapPin(meetup: meetup)
             }
-            
             NotificationCenter.default.post(name: .meetups, object: self.meetups)
-            
-        }) { (error) -> Void in
-            print(error)
-        }
+        }) { (error) -> Void in print(error) }
     }
     
     func drawMapPin(meetup: Meetup) {
@@ -63,14 +65,6 @@ class MapViewController: UIViewController {
             let coordinate = CLLocationCoordinate2DMake(meetup.latitude!, meetup.longitude!)
             let annotation = CustomAnnotation(title: meetup.meetupName!, subtitle: meetup.address!, coordinate: coordinate, meetup: meetup)
             self.mapView.addAnnotation(annotation)
-        }
-    }
-    
-    func centerMapByCurrentLocation(sender: AnyObject) {
-        if let location = self.locationManager.location {
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-            self.mapView.setRegion(region, animated: true)
         }
     }
     
@@ -84,6 +78,7 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: MKMapViewDelegate {
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
@@ -95,7 +90,7 @@ extension MapViewController: MKMapViewDelegate {
             annotationView?.annotation = annotation
         } else {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: id)
-            annotationView?.pinTintColor = UIColor.blue
+            annotationView?.pinTintColor = UIColor.red
             annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             annotationView?.canShowCallout = true
             annotationView?.animatesDrop = true
@@ -109,13 +104,16 @@ extension MapViewController: MKMapViewDelegate {
 }
 
 extension MapViewController: CLLocationManagerDelegate {
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
         manager.stopUpdatingLocation()
-
+        
         let lat = location.coordinate.latitude.description
         let lon = location.coordinate.longitude.description
-        let url = Meetup.meetupURLBuilder(lat: lat, lon: lon, topic: "technology")
+        let topic = Bundle.main.infoDictionary?["Default Search Topic"] as! String
+
+        let url = Meetup.meetupURLBuilder(lat: lat, lon: lon, topic: topic)
         
         MeetupClient.requestGETURL(url, success: {
             (JSONResponse) -> Void in
@@ -123,16 +121,18 @@ extension MapViewController: CLLocationManagerDelegate {
             for meetup in self.meetups {
                 self.drawMapPin(meetup: meetup)
             }
-            
             NotificationCenter.default.post(name: .meetups, object: self.meetups)
-            
-        }) { (error) -> Void in
-            print(error)
-        }
+        }) { (error) -> Void in print(error) }
         
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
         self.mapView.setRegion(region, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways {
+            mapView.showsUserLocation = status == .authorizedAlways
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

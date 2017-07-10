@@ -59,25 +59,28 @@ class DrawerContentViewController: UIViewController {
 }
 
 extension DrawerContentViewController: UITableViewDelegate, UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if filteredMeetups.count != 0 {
             return filteredMeetups.count
         }
         return meetups.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell =  tableView.dequeueReusableCell(withIdentifier: "PulleyCell"
-            , for: indexPath)
+        let cell =  tableView.dequeueReusableCell(withIdentifier: "PulleyCell", for: indexPath)
         let meetup: Meetup
         
         if (searchBar.text != "" && self.filteredMeetups.count != 0) {
@@ -92,12 +95,14 @@ extension DrawerContentViewController: UITableViewDelegate, UITableViewDataSourc
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "drawerTable", sender: meetups[indexPath.row])
     }
 }
 
 extension DrawerContentViewController: PulleyDrawerViewControllerDelegate {
+
     func collapsedDrawerHeight() -> CGFloat {
         return 68.0
     }
@@ -116,6 +121,7 @@ extension DrawerContentViewController: PulleyDrawerViewControllerDelegate {
 }
 
 extension DrawerContentViewController: UISearchBarDelegate {
+
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         if let drawerVC = self.parent as? PulleyViewController {
             drawerVC.setDrawerPosition(position: .open, animated: true)

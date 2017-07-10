@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ezt-aa-Ihx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ezt-aa-Ihx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -318,7 +318,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="dS0-Cv-Nwh">
-                        <barButtonItem key="rightBarButtonItem" title="Comments" id="pW1-DP-91N">
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="pW1-DP-91N">
                             <connections>
                                 <action selector="commentsButton:" destination="6ZG-Yq-euY" id="Yra-nL-0Mu"/>
                                 <segue destination="Q94-fl-yg2" kind="show" identifier="commentsTable" id="c07-c3-222"/>
@@ -336,10 +336,10 @@
             </objects>
             <point key="canvasLocation" x="2726" y="168"/>
         </scene>
-        <!--Comments View-->
+        <!--Comments-->
         <scene sceneID="wUp-ZI-6yn">
             <objects>
-                <viewController id="Q94-fl-yg2" customClass="CommentsView" customModule="Meetup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Comments" id="Q94-fl-yg2" customClass="CommentsViewController" customModule="Meetup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6pc-iH-2FT"/>
                         <viewControllerLayoutGuide type="bottom" id="YKU-8J-q94"/>

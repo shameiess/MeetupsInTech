@@ -76,7 +76,7 @@ class MeetupDetailTable: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "commentsTable") {
-            let nextView = segue.destination as! CommentsView
+            let nextView = segue.destination as! CommentsViewController
             nextView.event_id = meetup?.meetupId
         }
     }
@@ -88,7 +88,6 @@ class MeetupDetailTable: UITableViewController {
             self.mapView.addAnnotation(annotation)
         }
     }
-    
 }
 
 extension MeetupDetailTable: MKMapViewDelegate {

@@ -1,5 +1,5 @@
 //
-//  CommentsView.swift
+//  CommentsViewController.swift
 //  Meetup
 //
 //  Created by Kevin Nguyen on 11/16/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommentsView: UIViewController {
+class CommentsViewController: UIViewController {
 
     @IBOutlet weak var commentsTableView: UITableView!
     var comments: [Meetup.MeetupComment]?
@@ -28,10 +28,7 @@ class CommentsView: UIViewController {
             self.comments = Meetup.commentsfromMeetup(json: JSONResponse)
             self.commentsTableView.reloadData()
             self.activityIndicator.stopAnimating()
-
-        }) { (error) -> Void in
-            print(error)
-        }
+        }) { (error) -> Void in print(error) }
     }
     
     func setupLoadingIndicator() {
@@ -44,19 +41,24 @@ class CommentsView: UIViewController {
     }
 }
 
-extension CommentsView: UITableViewDelegate, UITableViewDataSource {
+extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.comments?.count ?? 1
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = commentsTableView.dequeueReusableCell(withIdentifier: "comment", for: indexPath)
         let comment = comments?[indexPath.row]

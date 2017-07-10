@@ -17,7 +17,7 @@
 		735049041DD65E1700AF2320 /* MeetupClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735049031DD65E1700AF2320 /* MeetupClient.swift */; };
 		735049071DD663C100AF2320 /* Meetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735049061DD663C100AF2320 /* Meetup.swift */; };
 		7378A7E01DDE49420023243C /* MeetupDetailTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7378A7DF1DDE49420023243C /* MeetupDetailTable.swift */; };
-		73CAF6C01DDC44D00065DA36 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6BF1DDC44D00065DA36 /* CommentsView.swift */; };
+		73CAF6C01DDC44D00065DA36 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */; };
 		73CAF6C61DDD40360065DA36 /* PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6C41DDD40360065DA36 /* PulleyViewController.swift */; };
 		73CAF6C71DDD40360065DA36 /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6C51DDD40360065DA36 /* PulleyPassthroughScrollView.swift */; };
 		73CAF6C91DDD41380065DA36 /* DrawerContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6C81DDD41380065DA36 /* DrawerContentViewController.swift */; };
@@ -39,7 +39,7 @@
 		735049031DD65E1700AF2320 /* MeetupClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupClient.swift; sourceTree = "<group>"; };
 		735049061DD663C100AF2320 /* Meetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meetup.swift; sourceTree = "<group>"; };
 		7378A7DF1DDE49420023243C /* MeetupDetailTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupDetailTable.swift; sourceTree = "<group>"; };
-		73CAF6BF1DDC44D00065DA36 /* CommentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		73CAF6C41DDD40360065DA36 /* PulleyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyViewController.swift; sourceTree = "<group>"; };
 		73CAF6C51DDD40360065DA36 /* PulleyPassthroughScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyPassthroughScrollView.swift; sourceTree = "<group>"; };
 		73CAF6C81DDD41380065DA36 /* DrawerContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentViewController.swift; sourceTree = "<group>"; };
@@ -86,12 +86,14 @@
 			isa = PBXGroup;
 			children = (
 				73CAF6C31DDD40220065DA36 /* PulleyLib */,
+				73DA38A71F14161700814F16 /* Models */,
 				735049051DD65E2100AF2320 /* API */,
+				73DA38A81F14163400814F16 /* Extension */,
 				735048F11DD5003500AF2320 /* AppDelegate.swift */,
 				73F2FB501DDD65DE00E6DC22 /* MapViewController.swift */,
 				73CAF6C81DDD41380065DA36 /* DrawerContentViewController.swift */,
 				7378A7DF1DDE49420023243C /* MeetupDetailTable.swift */,
-				73CAF6BF1DDC44D00065DA36 /* CommentsView.swift */,
+				73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */,
 				735048F51DD5003500AF2320 /* Main.storyboard */,
 				735048F81DD5003500AF2320 /* Assets.xcassets */,
 				735048FA1DD5003500AF2320 /* LaunchScreen.storyboard */,
@@ -104,9 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				735049031DD65E1700AF2320 /* MeetupClient.swift */,
-				735049061DD663C100AF2320 /* Meetup.swift */,
-				730460B11DDBBDD300CBA259 /* CustomAnnotation.swift */,
-				73F2FB4C1DDD605200E6DC22 /* Extensions.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -118,6 +117,23 @@
 				73CAF6C51DDD40360065DA36 /* PulleyPassthroughScrollView.swift */,
 			);
 			name = PulleyLib;
+			sourceTree = "<group>";
+		};
+		73DA38A71F14161700814F16 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				735049061DD663C100AF2320 /* Meetup.swift */,
+				730460B11DDBBDD300CBA259 /* CustomAnnotation.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		73DA38A81F14163400814F16 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				73F2FB4C1DDD605200E6DC22 /* Extensions.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		B4729C723C75442881C5E725 /* Frameworks */ = {
@@ -238,7 +254,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C8934A57CB758E354D0C724F /* [CP] Copy Pods Resources */ = {
@@ -272,7 +288,7 @@
 				735049071DD663C100AF2320 /* Meetup.swift in Sources */,
 				73F2FB4D1DDD605200E6DC22 /* Extensions.swift in Sources */,
 				730460B21DDBBDD300CBA259 /* CustomAnnotation.swift in Sources */,
-				73CAF6C01DDC44D00065DA36 /* CommentsView.swift in Sources */,
+				73CAF6C01DDC44D00065DA36 /* CommentsViewController.swift in Sources */,
 				73CAF6C61DDD40360065DA36 /* PulleyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

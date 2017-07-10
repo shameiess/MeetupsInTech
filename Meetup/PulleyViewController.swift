@@ -421,7 +421,7 @@ open class PulleyViewController: UIViewController, UIScrollViewDelegate, PulleyP
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSForegroundColorAttributeName: UIColor.white,
-             NSFontAttributeName: UIFont(name: "Zapfino", size: 21)!]
+             NSFontAttributeName: UIFont(name: "Zapfino", size: 15)!]
         
         self.locateButton.action = #selector(PulleyViewController.centerMapByCurrentLocation(sender:))
         self.locateButton.target = self
