@@ -28,9 +28,11 @@ class MeetupDetailTable: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.allowsSelection = false
         self.title = meetup?.meetupName
         self.meetupTitle.text = meetup?.meetupName
         self.meetupDescription.text = meetup?.meetupDescription?.html2String
+        
         self.mapView.delegate = self
         drawMapPin(meetup: meetup!)
         if (meetup?.latitude != nil && meetup?.longitude != nil) {
