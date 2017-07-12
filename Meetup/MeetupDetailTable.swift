@@ -28,17 +28,27 @@ class MeetupDetailTable: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.allowsSelection = false
+        //self.tableView.allowsSelection = false
         self.title = meetup?.meetupName
         self.meetupTitle.text = meetup?.meetupName
         self.meetupDescription.text = meetup?.meetupDescription?.html2String
         
         self.mapView.delegate = self
+      
         drawMapPin(meetup: meetup!)
         if (meetup?.latitude != nil && meetup?.longitude != nil) {
             let center = CLLocationCoordinate2D(latitude: (meetup?.latitude)!, longitude: (meetup?.longitude)!)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             self.mapView.setRegion(region, animated: true)
+        }
+    }
+  
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.row == 0) {
+            guard let address = meetup?.address?.replacingOccurrences(of: " ", with: "+") else { return }
+            let stringURL = "http://maps.apple.com/?address=" + address
+            let url = URL(string: stringURL)
+            UIApplication.shared.openURL(url!)
         }
     }
     

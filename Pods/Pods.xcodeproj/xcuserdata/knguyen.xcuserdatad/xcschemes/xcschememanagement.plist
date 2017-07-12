@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-MeetupServiceExtension.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SideMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>016D694DBBD879D46687A271F2EB37AB</key>
+		<key>02BA84527971514BCB0C61F3A54EDF11</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7C2E01AD562B6537642DA63DAB18F3E9</key>
+		<key>6FF4E6AAE12706724FA54C4154A633DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA398E7F42C7B0E10A1D8FDBF07AD0D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F08B5190CB838DF1E9A58ECB30535C03</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -400,7 +400,7 @@ open class PulleyViewController: UIViewController, UIScrollViewDelegate, PulleyP
     @IBAction func topicSearch(_ sender: Any) {
         let searchBar = UISearchBar()
         searchBar.delegate = self
-        searchBar.placeholder = "Search for a topic ie. iOS"
+        searchBar.placeholder = "Search ie. iOS"
         self.navigationItem.titleView = searchBar
     }
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

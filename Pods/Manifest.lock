@@ -1,15 +1,21 @@
 PODS:
-  - Alamofire (4.0.1)
-  - SwiftyJSON (3.1.1)
+  - Alamofire (4.5.0)
+  - OneSignal (2.5.4)
+  - SideMenu (2.3.3)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.0)
+  - Alamofire
+  - OneSignal (< 3.0, >= 2.5.2)
+  - SideMenu
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  OneSignal: da994bcf6a2efbdceaf71e389e1d05245c562899
+  SideMenu: a447554ae5c982e8077666389e1c8b0c8656e065
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: c60bc9f6aad360454eee5e3be928045cd53b7e85
+PODFILE CHECKSUM: e8f5677f63587b5e7477fe53397af754ab25c163
 
 COCOAPODS: 1.2.1

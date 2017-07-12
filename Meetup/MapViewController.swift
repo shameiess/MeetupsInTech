@@ -25,9 +25,9 @@ class MapViewController: UIViewController {
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        if (CLLocationManager.authorizationStatus() == .notDetermined) {
+        //if (CLLocationManager.authorizationStatus() == .notDetermined) {
             locationManager.requestAlwaysAuthorization()
-        }
+        //}
         locationManager.startUpdatingLocation()
         
         NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.centerMapByCurrentLocation(sender:)), name: .centerMapByCurrentLocation, object: nil)
