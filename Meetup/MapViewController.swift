@@ -49,8 +49,8 @@ class MapViewController: UIViewController {
         let topic = notification.userInfo?["topic"]
         guard let lat = locationManager.location?.coordinate.latitude.description else {return}
         guard let lon = locationManager.location?.coordinate.longitude.description else {return}
-        let url = Meetup.meetupURLBuilder(lat: lat, lon: lon, topic: topic as! String)
-        MeetupClient.requestGETURL(url, success: {
+        let url = MeetupClient.sharedInstance.getMeetupsBy(topic: topic as! String, lat: lat, lon: lon)
+        MeetupClient.sharedInstance.get(url, success: {
             (JSONResponse) -> Void in
             self.meetups = Meetup.meetupsFromJSON(json: JSONResponse)!
             for meetup in self.meetups {
@@ -115,9 +115,9 @@ extension MapViewController: CLLocationManagerDelegate {
         let lon = location.coordinate.longitude.description
         let topic = Bundle.main.infoDictionary?["Default Search Topic"] as! String
 
-        let url = Meetup.meetupURLBuilder(lat: lat, lon: lon, topic: topic)
+        let url = MeetupClient.sharedInstance.getMeetupsBy(topic: topic, lat: lat, lon: lon)
         
-        MeetupClient.requestGETURL(url, success: {
+        MeetupClient.sharedInstance.get(url, success: {
             (JSONResponse) -> Void in
             self.meetups = Meetup.meetupsFromJSON(json: JSONResponse)!
             for meetup in self.meetups {

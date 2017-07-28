@@ -23,7 +23,7 @@ class CommentsViewController: UIViewController {
         
         let url = "https://api.meetup.com/2/event_comments?&sign=true&photo-host=public&event_id=" + event_id! + "&page=20&key=61843107c6fc55826453135e261d"
         
-        MeetupClient.requestGETURL(url, success: {
+        MeetupClient.sharedInstance.get(url, success: {
             (JSONResponse) -> Void in
             self.comments = Meetup.commentsfromMeetup(json: JSONResponse)
             self.commentsTableView.reloadData()
