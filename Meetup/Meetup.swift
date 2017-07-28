@@ -21,10 +21,11 @@ class Meetup: NSObject {
     let timestamp: Double?
     
     let address: String?
+    let city: String?
     let latitude: Double?
     let longitude: Double?
     
-    init(meetupId: String?, meetupName: String?, meetupDescription: String?, meetupUrl: URL?, distance: Double?, timestamp: Double?, address: String?, latitude: Double?, longitude: Double?) {
+    init(meetupId: String?, meetupName: String?, meetupDescription: String?, meetupUrl: URL?, distance: Double?, timestamp: Double?, address: String?, city: String?,latitude: Double?, longitude: Double?) {
         self.meetupId = meetupId
         self.meetupName = meetupName
         self.meetupDescription = meetupDescription
@@ -34,6 +35,7 @@ class Meetup: NSObject {
         self.timestamp = timestamp
         
         self.address = address
+        self.city = city
         self.latitude = latitude
         self.longitude = longitude
     }
@@ -57,10 +59,11 @@ class Meetup: NSObject {
                 let distance = results[i]["distance"].double
                 let timestamp = results[i]["time"].double
                 let address = results[i]["venue"]["address_1"].string
+                let city = results[i]["venue"]["city"].string
                 let latitude = results[i]["venue"]["lat"].double
                 let longitude = results[i]["venue"]["lon"].double
                 
-                let meetup = Meetup(meetupId: meetupid, meetupName: meetupName, meetupDescription: meetupDescription, meetupUrl: meetupUrl, distance: distance, timestamp: timestamp, address: address, latitude: latitude, longitude: longitude)
+                let meetup = Meetup(meetupId: meetupid, meetupName: meetupName, meetupDescription: meetupDescription, meetupUrl: meetupUrl, distance: distance, timestamp: timestamp, address: address, city: city, latitude: latitude, longitude: longitude)
                 meetups.append(meetup)
             }
         }
