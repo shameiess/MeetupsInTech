@@ -46,7 +46,8 @@ class MeetupDetailTable: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row == 0) {
             guard let address = meetup?.address?.replacingOccurrences(of: " ", with: "+") else { return }
-            let stringURL = "http://maps.apple.com/?address=" + address
+            guard let city = meetup?.city?.replacingOccurrences(of: " ", with: "+") else { return }
+            let stringURL = "http://maps.apple.com/?address=" + address + "," + city
             let url = URL(string: stringURL)
             UIApplication.shared.openURL(url!)
         }
