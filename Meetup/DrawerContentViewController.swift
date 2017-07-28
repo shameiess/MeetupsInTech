@@ -42,7 +42,7 @@ class DrawerContentViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "drawerTable") {
-            let nextView = segue.destination as! MeetupDetailTable
+            let nextView = segue.destination as! MeetupDetailViewController
             
             // Passes the selected Meetup and index to detail view
             if let indexPath = self.tableView.indexPathForSelectedRow {

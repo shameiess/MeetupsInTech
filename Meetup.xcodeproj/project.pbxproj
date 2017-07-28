@@ -17,7 +17,7 @@
 		735048FC1DD5003500AF2320 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 735048FA1DD5003500AF2320 /* LaunchScreen.storyboard */; };
 		735049041DD65E1700AF2320 /* MeetupClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735049031DD65E1700AF2320 /* MeetupClient.swift */; };
 		735049071DD663C100AF2320 /* Meetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735049061DD663C100AF2320 /* Meetup.swift */; };
-		7378A7E01DDE49420023243C /* MeetupDetailTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7378A7DF1DDE49420023243C /* MeetupDetailTable.swift */; };
+		7378A7E01DDE49420023243C /* MeetupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7378A7DF1DDE49420023243C /* MeetupDetailViewController.swift */; };
 		737F1C2E1F16B7F20043873B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737F1C2D1F16B7F20043873B /* NotificationService.swift */; };
 		737F1C321F16B7F20043873B /* MeetupServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 737F1C2B1F16B7F20043873B /* MeetupServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		73CAF6C01DDC44D00065DA36 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */; };
@@ -67,7 +67,7 @@
 		735048FD1DD5003500AF2320 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		735049031DD65E1700AF2320 /* MeetupClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupClient.swift; sourceTree = "<group>"; };
 		735049061DD663C100AF2320 /* Meetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meetup.swift; sourceTree = "<group>"; };
-		7378A7DF1DDE49420023243C /* MeetupDetailTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupDetailTable.swift; sourceTree = "<group>"; };
+		7378A7DF1DDE49420023243C /* MeetupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupDetailViewController.swift; sourceTree = "<group>"; };
 		737F1C2B1F16B7F20043873B /* MeetupServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MeetupServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		737F1C2D1F16B7F20043873B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		737F1C2F1F16B7F20043873B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,6 +107,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73492ABE1F2B8CD8004C9C31 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				735048F11DD5003500AF2320 /* AppDelegate.swift */,
+				73F2FB501DDD65DE00E6DC22 /* MapViewController.swift */,
+				73CAF6C81DDD41380065DA36 /* DrawerContentViewController.swift */,
+				7378A7DF1DDE49420023243C /* MeetupDetailViewController.swift */,
+				73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		735048E51DD5003500AF2320 = {
 			isa = PBXGroup;
 			children = (
@@ -135,11 +147,7 @@
 				73DA38A71F14161700814F16 /* Models */,
 				735049051DD65E2100AF2320 /* API */,
 				73DA38A81F14163400814F16 /* Extension */,
-				735048F11DD5003500AF2320 /* AppDelegate.swift */,
-				73F2FB501DDD65DE00E6DC22 /* MapViewController.swift */,
-				73CAF6C81DDD41380065DA36 /* DrawerContentViewController.swift */,
-				7378A7DF1DDE49420023243C /* MeetupDetailTable.swift */,
-				73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */,
+				73492ABE1F2B8CD8004C9C31 /* ViewControllers */,
 				735048F51DD5003500AF2320 /* Main.storyboard */,
 				735048F81DD5003500AF2320 /* Assets.xcassets */,
 				735048FA1DD5003500AF2320 /* LaunchScreen.storyboard */,
@@ -418,7 +426,7 @@
 				73CAF6C71DDD40360065DA36 /* PulleyPassthroughScrollView.swift in Sources */,
 				73F2FB511DDD65DE00E6DC22 /* MapViewController.swift in Sources */,
 				73CAF6C91DDD41380065DA36 /* DrawerContentViewController.swift in Sources */,
-				7378A7E01DDE49420023243C /* MeetupDetailTable.swift in Sources */,
+				7378A7E01DDE49420023243C /* MeetupDetailViewController.swift in Sources */,
 				735048F21DD5003500AF2320 /* AppDelegate.swift in Sources */,
 				735049041DD65E1700AF2320 /* MeetupClient.swift in Sources */,
 				735049071DD663C100AF2320 /* Meetup.swift in Sources */,

@@ -70,7 +70,7 @@ class MapViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "detailsMap") {
-            let nextView = segue.destination as! MeetupDetailTable
+            let nextView = segue.destination as! MeetupDetailViewController
             let annotation = sender as! CustomAnnotation
             nextView.meetup = annotation.meetup
         }
@@ -99,7 +99,9 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        performSegue(withIdentifier: "detailsMap", sender: view.annotation as? CustomAnnotation)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "detailsMap", sender: view.annotation as? CustomAnnotation)
+        }
     }
 }
 

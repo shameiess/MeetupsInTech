@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MeetupDetailTable: UITableViewController {
+class MeetupDetailViewController: UITableViewController {
     
     var meetup: Meetup?
     
@@ -103,7 +103,7 @@ class MeetupDetailTable: UITableViewController {
     }
 }
 
-extension MeetupDetailTable: MKMapViewDelegate {
+extension MeetupDetailViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
