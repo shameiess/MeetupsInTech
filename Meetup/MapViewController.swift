@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import NotificationCenter
+import SideMenu
 
 class MapViewController: UIViewController {
     
@@ -19,15 +20,16 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         self.mapView.delegate = self
         self.mapView.showsUserLocation = true
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //if (CLLocationManager.authorizationStatus() == .notDetermined) {
+        if (CLLocationManager.authorizationStatus() == .notDetermined) {
             locationManager.requestAlwaysAuthorization()
-        //}
+            //locationManager.requestWhenInUseAuthorization()
+        }
         locationManager.startUpdatingLocation()
         
         NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.centerMapByCurrentLocation(sender:)), name: .centerMapByCurrentLocation, object: nil)
