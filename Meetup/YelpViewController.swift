@@ -79,8 +79,7 @@ class YelpViewController: UIViewController {
     
     func updateHeaderAlphaChanel() {
         if ((self.headerView) != nil) {
-            print("%@", self.headerView.frame.size.height)
-            let normalized = 1/self.headerView.frame.size.height// CGFloat(floatLiteral: 1/150) //headerHeight.constant
+            let normalized = 1/self.headerView.frame.size.height
             let offset = -self.tableView.contentOffset.y
             self.headerView.alpha = normalized*offset
         }
