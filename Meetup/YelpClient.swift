@@ -12,7 +12,7 @@ class YelpClient: NSObject {
     
     static let sharedInstance = YelpClient()
     
-    static func getYelpBusinesses(_ term: String, completionHandler: @escaping ([Yelp.YelpBusiness]?, Error?) -> Void) {
+    func getYelpBusinesses(_ term: String, completionHandler: @escaping ([Yelp.YelpBusiness]?, Error?) -> Void) {
         let endpoint = "https://api.yelp.com/v3/businesses/search?term=\(term)&latitude=37.786882&longitude=-122.399972"
         guard let url = URL(string: endpoint) else {
             let error = BackendError.urlError(reason: "Unable to construct url: \(endpoint)")

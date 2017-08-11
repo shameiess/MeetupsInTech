@@ -14,6 +14,18 @@ extension Notification.Name {
     static let meetups = Notification.Name("meetups")
 }
 
+extension UIImageView{
+    
+    func setImageFromURL(url: String) {
+        
+        if let url = NSURL(string: url) {
+            if let data = NSData(contentsOf: url as URL) {
+                self.image = UIImage(data: data as Data)
+            }
+        }
+    }
+}
+
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")

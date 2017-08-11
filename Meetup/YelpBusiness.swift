@@ -15,7 +15,9 @@ struct Yelp: Codable {
     struct YelpBusiness: Codable {
         var name: String?
         var image_url: String?
-//        var address1: String?
+        var rating: Double?
+        var distance: Double?
+        var review_count: Int?
 //        var city: String?
 //        var zip_code: String?
     }

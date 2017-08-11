@@ -9,6 +9,7 @@ target 'Meetup' do
   pod 'SwiftyJSON'
   pod 'SideMenu'
   pod 'OneSignal', '>= 2.5.2', '< 3.0'
+  pod 'SDWebImage'
   
 end
 
