@@ -10,6 +10,7 @@ target 'Meetup' do
   pod 'SideMenu'
   pod 'OneSignal', '>= 2.5.2', '< 3.0'
   pod 'SDWebImage'
+  pod 'Kingfisher'
   
 end
 

@@ -11,7 +11,7 @@ import SideMenu
 
 class SideMenuViewController: UITableViewController {
 
-    let items = ["First","Second","Third", "Fourth"]
+    let items = ["Yelp","Second","Third","Fourth"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,12 @@ class SideMenuViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.row)!")
-        self.navigationController?.pushViewController(YelpViewController(), animated: true)
+        if (indexPath.row == 0) {
+            self.navigationController?.pushViewController(YelpViewController(), animated: true)
+        }
+        else {
+            //self.navigationController?.pushViewController(YelpTableViewController(), animated: true)
+        }
     }
     /*
     // MARK: - Navigation
