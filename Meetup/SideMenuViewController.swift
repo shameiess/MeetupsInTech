@@ -37,7 +37,11 @@ class SideMenuViewController: UITableViewController {
             self.navigationController?.pushViewController(YelpViewController(), animated: true)
         }
         else {
-            //self.navigationController?.pushViewController(YelpTableViewController(), animated: true)
+//            let messagesTableViewController = MessagesTableViewController()
+//            let navController = UINavigationController(rootViewController: messagesTableViewController)
+//            self.present(navController, animated: true, completion: nil)
+            self.navigationController?.pushViewController(MessagesTableViewController(), animated: true)
+//            self.present(MessagesTableViewController(), animated: true, completion: nil)
         }
     }
     /*

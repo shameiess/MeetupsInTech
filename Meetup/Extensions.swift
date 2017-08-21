@@ -69,3 +69,35 @@ extension String {
         return html2AttributedString?.string ?? ""
     }
 }
+
+extension UIViewController {
+//    var showSideMenu: Bool
+//    if (self.showTrayButton && self.menu && !self.presentingViewController) {
+//    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"lefttray.button.png"] style:UIBarButtonItemStylePlain target:self action:@selector(onMenu:)];
+//    [menuButton setImageInsets:UIEdgeInsetsMake(0, -15, 0, -15)];
+//    self.navigationItem.leftBarButtonItem = menuButton;
+//    self.menuButton = menuButton;
+//    } else
+//    [self setupBackButton];
+
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+extension UIAlertController {
+    static func alertWithTitle(title: String, message: String, buttonTitle: String) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: buttonTitle, style: .cancel, handler: nil)
+        alertController.addAction(action)
+        
+        return alertController
+    }
+}

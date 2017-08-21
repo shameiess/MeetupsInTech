@@ -12,6 +12,11 @@ target 'Meetup' do
   pod 'SDWebImage'
   pod 'Kingfisher'
   
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  
 end
 
 target 'MeetupServiceExtension' do
