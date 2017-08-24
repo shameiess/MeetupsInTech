@@ -33,7 +33,10 @@
 		73848B371F438949003300F6 /* Shakeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73848B361F438949003300F6 /* Shakeable.swift */; };
 		73848B391F4396EC003300F6 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73848B381F4396EC003300F6 /* MessagesTableViewController.swift */; };
 		73A4D4961F34F58200127A51 /* YelpRatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A4D4951F34F58200127A51 /* YelpRatingControl.swift */; };
+		73A79A881F4CB87C0095D11E /* ChatLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A79A871F4CB87C0095D11E /* ChatLogViewController.swift */; };
 		73B17C601F43501A003FAEFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B17C5F1F43501A003FAEFF /* GoogleService-Info.plist */; };
+		73B1C8B21F4F388800A9D7B7 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1C8B11F4F388800A9D7B7 /* ChatMessage.swift */; };
+		73B1C8B41F4F3EAD00A9D7B7 /* ChatUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1C8B31F4F3EAD00A9D7B7 /* ChatUsersTableViewController.swift */; };
 		73CAF6C01DDC44D00065DA36 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */; };
 		73CAF6C61DDD40360065DA36 /* PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6C41DDD40360065DA36 /* PulleyViewController.swift */; };
 		73CAF6C71DDD40360065DA36 /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6C51DDD40360065DA36 /* PulleyPassthroughScrollView.swift */; };
@@ -101,7 +104,10 @@
 		73848B361F438949003300F6 /* Shakeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shakeable.swift; sourceTree = "<group>"; };
 		73848B381F4396EC003300F6 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 		73A4D4951F34F58200127A51 /* YelpRatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpRatingControl.swift; sourceTree = "<group>"; };
+		73A79A871F4CB87C0095D11E /* ChatLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewController.swift; sourceTree = "<group>"; };
 		73B17C5F1F43501A003FAEFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		73B1C8B11F4F388800A9D7B7 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		73B1C8B31F4F3EAD00A9D7B7 /* ChatUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersTableViewController.swift; sourceTree = "<group>"; };
 		73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		73CAF6C41DDD40360065DA36 /* PulleyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyViewController.swift; sourceTree = "<group>"; };
 		73CAF6C51DDD40360065DA36 /* PulleyPassthroughScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyPassthroughScrollView.swift; sourceTree = "<group>"; };
@@ -143,8 +149,11 @@
 				73492ABF1F2BBAEB004C9C31 /* SideMenuViewController.swift */,
 				73848B341F4353DB003300F6 /* LoginViewController.swift */,
 				734C262D1F44C8EC000EB09B /* ChatUser.swift */,
-				73848B381F4396EC003300F6 /* MessagesTableViewController.swift */,
+				73B1C8B11F4F388800A9D7B7 /* ChatMessage.swift */,
 				734C262F1F44CD90000EB09B /* ChatUserCell.swift */,
+				73848B381F4396EC003300F6 /* MessagesTableViewController.swift */,
+				73B1C8B31F4F3EAD00A9D7B7 /* ChatUsersTableViewController.swift */,
+				73A79A871F4CB87C0095D11E /* ChatLogViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -473,13 +482,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				73848B351F4353DB003300F6 /* LoginViewController.swift in Sources */,
+				73B1C8B41F4F3EAD00A9D7B7 /* ChatUsersTableViewController.swift in Sources */,
 				73CAF6C71DDD40360065DA36 /* PulleyPassthroughScrollView.swift in Sources */,
 				73F2FB511DDD65DE00E6DC22 /* MapViewController.swift in Sources */,
 				73848B371F438949003300F6 /* Shakeable.swift in Sources */,
 				73CAF6C91DDD41380065DA36 /* DrawerContentViewController.swift in Sources */,
 				7378A7E01DDE49420023243C /* MeetupDetailViewController.swift in Sources */,
 				73492AC01F2BBAEB004C9C31 /* SideMenuViewController.swift in Sources */,
+				73A79A881F4CB87C0095D11E /* ChatLogViewController.swift in Sources */,
 				735048F21DD5003500AF2320 /* AppDelegate.swift in Sources */,
+				73B1C8B21F4F388800A9D7B7 /* ChatMessage.swift in Sources */,
 				735049041DD65E1700AF2320 /* MeetupClient.swift in Sources */,
 				73848B391F4396EC003300F6 /* MessagesTableViewController.swift in Sources */,
 				734C26301F44CD90000EB09B /* ChatUserCell.swift in Sources */,

@@ -16,11 +16,14 @@ class MessagesTableViewController: UITableViewController {
     
     let cellId = "cellId"
     var users = [ChatUser]()
+    var messages = [ChatMessage]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        let showChatUsers = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(handleShowChatUsers))
+        navigationItem.setRightBarButtonItems([logoutBarButtonItem, showChatUsers], animated: true)
         
         tableView.register(ChatUserCell.self, forCellReuseIdentifier: cellId)
         
@@ -30,6 +33,7 @@ class MessagesTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         checkIfUserIsLoggedIn()
+        observeMessages()
     }
     
     func fetchUser() {
@@ -37,7 +41,7 @@ class MessagesTableViewController: UITableViewController {
             
             if let dictionary = snapshot.value as? [String: Any] {
                 let user = ChatUser()
-                //user.setValuesForKeys(dictionary)
+                user.id = snapshot.key
                 user.setValuesForKeys(dictionary)
                 // ^will crash if key is not correct or use safer way:
 //                user.name = dictionary["name"] as? String
@@ -68,6 +72,21 @@ class MessagesTableViewController: UITableViewController {
         }
     }
     
+    func observeMessages() {
+        let ref = Database.database().reference().child("messages").observe(DataEventType.childAdded, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: Any] {
+                let message = ChatMessage()
+                message.setValuesForKeys(dictionary)
+                self.messages.append(message)
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }, withCancel: nil)
+
+    }
+    
     func handleLogout() {
         do {
             try Auth.auth().signOut()
@@ -78,6 +97,12 @@ class MessagesTableViewController: UITableViewController {
         //let navController = UINavigationController(rootViewController: loginViewController)
         self.present(loginViewController, animated: true, completion: nil)
         //self.navigationController?.pushViewController(loginViewController, animated: true)
+    }
+    
+    func handleShowChatUsers() {
+        let chatUsersViewController = ChatUsersTableViewController()
+        let navController = UINavigationController(rootViewController: chatUsersViewController)
+        self.present(navController, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
@@ -95,14 +120,11 @@ class MessagesTableViewController: UITableViewController {
         let user = users[indexPath.row]
         cell.textLabel?.text = user.name
         cell.detailTextLabel?.text = user.email
-        //cell.imageView?.image = UIImage(named: "compass_background")
-        //cell.profileImageView.image = UIImage(named: "yeezy")
         if let profileImageURL = user.profileImageURL {
             let url = URL(string: profileImageURL)
-            //cell.profileImageView.sd_setImage(with: url, completed: nil)
             cell.profileImageView.kf.setImage(with: url, placeholder: UIImage(), options: [.transition(.fade(0.1))])
-            //cell.profileImageView.kf.setImage(with: url, placeholder: UIImage(named: "compass_background"), options: [.transition(.fade(0.1))])
         }
+        
         cell.layoutIfNeeded()
         cell.setNeedsLayout()
         return cell
@@ -110,6 +132,13 @@ class MessagesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = users[indexPath.row]
+        let chatLogViewController = ChatLogViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        chatLogViewController.user = user
+        self.navigationController?.pushViewController(chatLogViewController, animated: true)
     }
     
     /*
