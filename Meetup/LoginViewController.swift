@@ -142,7 +142,7 @@ class LoginViewController: UIViewController {
     }
     
     private func registerUserIntoFirebaseDB(uid: String, values: [String: Any]) {
-        let ref = Database.database().reference(fromURL: "https://meetup-chat-4ca0e.firebaseio.com/")
+        let ref = Database.database().reference() //(fromURL: "https://meetup-chat-4ca0e.firebaseio.com/") not needed since reference is sufficient
         let usersReference = ref.child("users").child(uid)
         usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
             if (err != nil) {
@@ -186,12 +186,13 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-    let passwordTextField: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Password"
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.isSecureTextEntry = true
         textField.clearButtonMode = .whileEditing
+        textField.delegate = self
         return textField
     }()
     
@@ -305,5 +306,12 @@ extension LoginViewController: UIImagePickerControllerDelegate, UINavigationCont
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        handleLoginRegister()
+        return true
     }
 }
