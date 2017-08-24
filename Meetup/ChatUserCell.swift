@@ -12,15 +12,23 @@ class ChatUserCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        textLabel?.frame = CGRect(x: 100, y: (textLabel?.frame.origin.y)! - 2, width: (textLabel?.frame.width)!, height: (textLabel?.frame.height)!)
-        textLabel?.font =  UIFont.systemFont(ofSize: 20)
-//        textLabel?.numberOfLines = 1
-//        textLabel?.lineBreakMode = .byTruncatingTail
-//        textLabel?.preferredMaxLayoutWidth = 100//textLabel!.frame.width
-//        textLabel?.sizeToFit()
-//        textLabel?.backgroundColor = UIColor.red
+        textLabel?.frame = CGRect(x: 100, y: (textLabel?.frame.origin.y)! - 2, width: contentView.frame.size.width - 115, height: textLabel!.frame.height)
+        textLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 20)//UIFont.systemFont(ofSize: 20)
+        textLabel?.textColor = UIColor.orange
+        textLabel?.numberOfLines = 0
+        textLabel?.lineBreakMode = .byWordWrapping
+        //textLabel?.preferredMaxLayoutWidth = textLabel!.frame.size.width - 70//(textLabel?.bounds.size.width)!
+        textLabel?.sizeToFit()
+        //textLabel?.backgroundColor = UIColor.red
         //textLabel?.adjustsFontSizeToFitWidth = true
         detailTextLabel?.frame = CGRect(x: 100, y: (detailTextLabel?.frame.origin.y)! + 2, width: (detailTextLabel?.frame.width)!, height: (detailTextLabel?.frame.height)!)
+        detailTextLabel?.textColor = UIColor.lightGray
+        
+//        self.contentView.setNeedsLayout()
+//        self.contentView.layoutIfNeeded()
+        
+        //self.setNeedsLayout()
+//        self.layoutIfNeeded()
     }
     
     let profileImageView: UIImageView = {
@@ -28,6 +36,8 @@ class ChatUserCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 35
         imageView.layer.masksToBounds = true
+        imageView.layer.borderColor = UIColor.cyan.cgColor
+        imageView.layer.borderWidth = 2
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -36,7 +46,7 @@ class ChatUserCell: UITableViewCell {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         addSubview(profileImageView)
         
-        profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+        profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
         profileImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
