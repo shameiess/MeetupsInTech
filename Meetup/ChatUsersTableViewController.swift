@@ -11,6 +11,7 @@ import Firebase
 
 class ChatUsersTableViewController: UITableViewController {
 
+    var messagesController: MessagesTableViewController?
     let cellId = "cellId"
     var users = [ChatUser]()
     
@@ -99,10 +100,14 @@ class ChatUsersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let user = users[indexPath.row]
-        let chatLogViewController = ChatLogViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        chatLogViewController.user = user
-        self.navigationController?.pushViewController(chatLogViewController, animated: true)
+        dismiss(animated: true) {
+            let user = self.users[indexPath.row]
+            self.messagesController?.showShowChatLog(for: user)
+        }
+//        let user = users[indexPath.row]
+//        let chatLogViewController = ChatLogViewController(collectionViewLayout: UICollectionViewFlowLayout())
+//        chatLogViewController.user = user
+//        self.navigationController?.pushViewController(chatLogViewController, animated: true)
     }
 
 }
