@@ -15,8 +15,8 @@ import SDWebImage
 class MessagesTableViewController: UITableViewController {
     
     let cellId = "cellId"
-    var users = [ChatUser]()
     var messages = [ChatMessage]()
+    var groupedMessages = [String: ChatMessage]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,25 +44,28 @@ class MessagesTableViewController: UITableViewController {
                 print(snapshot)
                 if let dictionary = snapshot.value as? [String: Any] {
                     self.navigationItem.title = dictionary["name"] as? String
-                    self.fetchUser()
                 }
             })
         }
     }
     
     func observeMessages() {
-        let ref = Database.database().reference().child("messages").observe(DataEventType.childAdded, with: { (snapshot) in
+        Database.database().reference().child("messages").observe(DataEventType.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: Any] {
                 let message = ChatMessage()
                 message.setValuesForKeys(dictionary)
                 self.messages.append(message)
+                if let recipientId = message.recipientId {
+                    self.groupedMessages[recipientId] = message
+                    self.messages = Array(self.groupedMessages.values)
+                    self.messages.sort { $0.timestamp!.intValue > $1.timestamp!.intValue }
+                }
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
             }
         }, withCancel: nil)
-
     }
     
     func handleLogout() {
