@@ -152,12 +152,23 @@ class MessagesTableViewController: UITableViewController {
         return 100
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let user = users[indexPath.row]
-//        let chatLogViewController = ChatLogViewController(collectionViewLayout: UICollectionViewFlowLayout())
-//        chatLogViewController.user = user
-//        self.navigationController?.pushViewController(chatLogViewController, animated: true)
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let message = messages[indexPath.row]
+        guard let chatParterId = message.chatPartnerId() else {
+            return
+        }
+        let ref = Database.database().reference().child("users").child(chatParterId)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            print(snapshot)
+            guard let dictionary = snapshot.value as? [String: Any] else {
+                return
+            }
+            let user = ChatUser()
+            user.id = chatParterId
+            user.setValuesForKeys(dictionary)
+            self.showShowChatLog(for: user)
+        }, withCancel: nil)
+    }
     
     /*
     // Override to support conditional editing of the table view.
