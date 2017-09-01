@@ -13,6 +13,8 @@ import FirebaseStorage
 
 class LoginViewController: UIViewController {
     
+    var messagesViewController: MessagesTableViewController?
+    
     let loginRegisterSegmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl(items: ["Login", "Register"])
         sc.selectedSegmentIndex = 1
@@ -88,6 +90,7 @@ class LoginViewController: UIViewController {
                 return
             }
             if (user != nil) {
+                self.messagesViewController?.checkIfUserIsLoggedIn()
                 self.dismiss(animated: true, completion: nil)
 //                self.navigationController?.popViewController(animated: true)
             }
@@ -149,6 +152,7 @@ class LoginViewController: UIViewController {
                 print(err!)
                 return
             }
+            self.messagesViewController?.checkIfUserIsLoggedIn()
             print("Saved user succesfully in Firebase database")
             self.dismiss(animated: true, completion: nil)
         })

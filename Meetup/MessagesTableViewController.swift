@@ -75,6 +75,7 @@ class MessagesTableViewController: UITableViewController {
             print(logoutError)
         }
         let loginViewController = LoginViewController()
+        loginViewController.messagesViewController = self
         self.present(loginViewController, animated: true, completion: nil)
     }
     
