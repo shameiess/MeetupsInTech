@@ -28,11 +28,12 @@ class MessagesTableViewController: UITableViewController {
         tableView.register(ChatUserCell.self, forCellReuseIdentifier: cellId)
         
         checkIfUserIsLoggedIn()
-        observeMessages()
+        //observeMessages()
+        //observeUserMessages()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        checkIfUserIsLoggedIn()
+        //checkIfUserIsLoggedIn()
     }
 
     func checkIfUserIsLoggedIn() {
@@ -44,9 +45,44 @@ class MessagesTableViewController: UITableViewController {
                 print(snapshot)
                 if let dictionary = snapshot.value as? [String: Any] {
                     self.navigationItem.title = dictionary["name"] as? String
+                    self.refreshTable()
                 }
             })
         }
+    }
+    
+    func refreshTable() {
+        messages.removeAll()
+        groupedMessages.removeAll()
+        tableView.reloadData()
+        observeUserMessages()
+    }
+    
+    func observeUserMessages() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        // Get user-messages by current user
+        let ref = Database.database().reference().child("user-messages").child(uid)
+        ref.observe(.childAdded, with: { (snapshot) in
+            let messageId = snapshot.key
+            // Get message reference by message Id
+            let messageReference = Database.database().reference().child("messages").child(messageId)
+            messageReference.observe(.value, with: { (snapshot) in
+                if let dictionary = snapshot.value as? [String: Any] {
+                    let message = ChatMessage()
+                    message.setValuesForKeys(dictionary)
+                    self.messages.append(message)
+                    if let recipientId = message.recipientId {
+                        self.groupedMessages[recipientId] = message
+                        self.messages = Array(self.groupedMessages.values)
+                        self.messages.sort { $0.timestamp!.intValue > $1.timestamp!.intValue }
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }, withCancel: nil)
+        }, withCancel: nil)
     }
     
     func observeMessages() {

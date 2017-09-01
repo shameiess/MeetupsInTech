@@ -11,10 +11,35 @@ import Firebase
 
 class ChatLogViewController: UICollectionViewController {
     
+    let cellId = "cellId"
+    var messages = [ChatMessage]()
+    
     var user: ChatUser? {
         didSet {
             self.navigationItem.title = user?.name
+            observeChatMessages()
         }
+    }
+    
+    func observeChatMessages() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let userMessagesRef = Database.database().reference().child("user-messages").child(uid)
+        userMessagesRef.observe(.childAdded, with: { (snapshot) in
+            print(snapshot)
+            let messageId = snapshot.key
+            let messagesRef = Database.database().reference().child("messages").child(messageId)
+            messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let dictionary = snapshot.value as? [String: Any] else { return }
+                let message = ChatMessage()
+                message.setValuesForKeys(dictionary)
+                if (message.chatPartnerId() == self.user?.id) {
+                    self.messages.append(message)
+                    DispatchQueue.main.async {
+                        self.collectionView?.reloadData()
+                    }
+                }
+            }, withCancel: nil)
+        }, withCancel: nil)
     }
 
     lazy var inputTextField: UITextField = {
@@ -28,13 +53,15 @@ class ChatLogViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = UIColor.white
-        
+        collectionView?.alwaysBounceVertical = true
+        collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         setupInputContainerView()
     }
     
     func setupInputContainerView() {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.backgroundColor = UIColor.white
         view.addSubview(containerView)
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -74,9 +101,39 @@ class ChatLogViewController: UICollectionViewController {
         let senderId = Auth.auth().currentUser!.uid
         let timestamp = Int(NSDate().timeIntervalSince1970)
         let values = ["text": inputTextField.text!, "recipientId": recipientId, "senderId": senderId, "timestamp": timestamp] as [String : Any]
-        ref.updateChildValues(values)
+        //ref.updateChildValues(values)
+        // updates messages
+        ref.updateChildValues(values) { (error, ref) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            // update user-messages message ref by sender and recipient
+            let messageId = ref.key
+
+            let userMessagesRef = Database.database().reference().child("user-messages").child(senderId)
+            userMessagesRef.updateChildValues([messageId: 1])
+            
+            let recipientMessagesRef = Database.database().reference().child("user-messages").child(recipientId)
+            recipientMessagesRef.updateChildValues([messageId: 1])
+        }
     }
 
+}
+
+extension ChatLogViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 50)
+    }
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages.count
+    }
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ChatMessageCell
+        let message = messages[indexPath.row]
+        cell.textView.text = message.text
+        return cell
+    }
 }
 
 extension ChatLogViewController: UITextFieldDelegate {
