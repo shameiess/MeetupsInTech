@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ChatMessage: NSObject {
     
@@ -14,4 +15,8 @@ class ChatMessage: NSObject {
     var timestamp: NSNumber?
     var senderId: String?
     var recipientId: String?
+    
+    func chatPartnerId() -> String? {
+        return (senderId == Auth.auth().currentUser?.uid) ? recipientId : senderId
+    }
 }

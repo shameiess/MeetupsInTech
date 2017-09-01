@@ -13,8 +13,8 @@ class ChatUserCell: UITableViewCell {
     
     var message: ChatMessage? {
         didSet {
-            if let recipientId = message?.recipientId {
-                let ref = Database.database().reference().child("users").child(recipientId)
+            if let chatPartnerId = message?.chatPartnerId() {
+                let ref = Database.database().reference().child("users").child(chatPartnerId)
                 ref.observe(.value, with: { (snapshot) in
                     if let dictionary = snapshot.value as? [String: Any] {
                         let user = ChatUser()
