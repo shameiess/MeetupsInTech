@@ -58,7 +58,7 @@ class YelpViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UINib(nibName: "YelpTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         
         self.view.addSubview(tableView)
         
@@ -267,6 +267,10 @@ extension YelpViewController: UITableViewDelegate, UITableViewDataSource {
         return 100
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -276,7 +280,7 @@ extension YelpViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("YelpTableViewCell", owner: self, options: nil)?.first as! YelpTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! YelpTableViewCell
         
         let yelp = self.businesses[indexPath.row]
         
