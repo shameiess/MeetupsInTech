@@ -123,8 +123,21 @@ class ChatLogViewController: UICollectionViewController {
 
 extension ChatLogViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 50)
+        var height: CGFloat = 80
+        
+        if let text = messages[indexPath.row].text {
+            height = estimatedFrameForText(text: text).height + 20
+        }
+        
+        return CGSize(width: view.frame.width, height: height)
     }
+    
+    private func estimatedFrameForText(text: String) -> CGRect {
+        let size = CGSize(width: 200, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin)
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
