@@ -38,6 +38,9 @@ extension UIColor {
     convenience init(netHex:Int) {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
+    
+    static let chatBubbleBlueColor = UIColor(red: 50, green: 206, blue: 243)//UIColor(red: 21, green: 126, blue: 251)
+    static let chatBubbleGrayColor = UIColor(red: 241, green: 240, blue: 240)
 }
 
 extension Double {

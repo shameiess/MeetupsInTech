@@ -150,9 +150,21 @@ extension ChatLogViewController: UICollectionViewDelegateFlowLayout {
         let message = messages[indexPath.row]
         cell.textView.text = message.text
         
+        setupCell(cell: cell, message: message)
+        
         cell.bubbleWidthAnchor?.constant = estimatedFrameForText(text: message.text!).width + 32
         
         return cell
+    }
+    
+    private func setupCell(cell: ChatMessageCell, message: ChatMessage) {
+        if message.senderId == Auth.auth().currentUser?.uid {
+            //blue
+            cell.bubbleView.backgroundColor = UIColor.chatBubbleBlueColor
+        } else {
+            cell.bubbleView.backgroundColor = UIColor.chatBubbleGrayColor
+            cell.textView.textColor = UIColor.black
+        }
     }
 }
 
