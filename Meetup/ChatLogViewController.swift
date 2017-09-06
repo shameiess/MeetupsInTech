@@ -55,6 +55,7 @@ class ChatLogViewController: UICollectionViewController {
         collectionView?.backgroundColor = UIColor.white
         collectionView?.alwaysBounceVertical = true
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58, right: 0)
         setupInputContainerView()
     }
     
@@ -108,6 +109,8 @@ class ChatLogViewController: UICollectionViewController {
                 print(error!)
                 return
             }
+            self.inputTextField.text = nil
+            
             // update user-messages message ref by sender and recipient
             let messageId = ref.key
 
@@ -145,6 +148,9 @@ extension ChatLogViewController: UICollectionViewDelegateFlowLayout {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ChatMessageCell
         let message = messages[indexPath.row]
         cell.textView.text = message.text
+        
+        cell.bubbleWidthAnchor?.constant = estimatedFrameForText(text: message.text!).width + 32
+        
         return cell
     }
 }
