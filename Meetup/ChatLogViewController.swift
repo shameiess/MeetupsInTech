@@ -135,6 +135,10 @@ class ChatLogViewController: UICollectionViewController {
             recipientMessagesRef.updateChildValues([messageId: 1])
         }
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout()
+    }
 
 }
 
@@ -146,7 +150,8 @@ extension ChatLogViewController: UICollectionViewDelegateFlowLayout {
             height = estimatedFrameForText(text: text).height + 20
         }
         
-        return CGSize(width: view.frame.width, height: height)
+        let width = UIScreen.main.bounds.width
+        return CGSize(width: width, height: height)
     }
     
     private func estimatedFrameForText(text: String) -> CGRect {
