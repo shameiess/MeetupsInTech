@@ -17,6 +17,7 @@ class MessagesTableViewController: UITableViewController {
     let cellId = "cellId"
     var messages = [ChatMessage]()
     var groupedMessages = [String: ChatMessage]()
+    var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,32 +78,39 @@ class MessagesTableViewController: UITableViewController {
                         self.messages.sort { $0.timestamp!.intValue > $1.timestamp!.intValue }
                     }
                     
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+                    self.timer?.invalidate()
+                    self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
                 }
             }, withCancel: nil)
         }, withCancel: nil)
     }
     
-    func observeMessages() {
-        Database.database().reference().child("messages").observe(DataEventType.childAdded, with: { (snapshot) in
-            if let dictionary = snapshot.value as? [String: Any] {
-                let message = ChatMessage()
-                message.setValuesForKeys(dictionary)
-                self.messages.append(message)
-                if let recipientId = message.recipientId {
-                    self.groupedMessages[recipientId] = message
-                    self.messages = Array(self.groupedMessages.values)
-                    self.messages.sort { $0.timestamp!.intValue > $1.timestamp!.intValue }
-                }
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
-        }, withCancel: nil)
+    func handleReloadTable() {
+        DispatchQueue.main.async {
+            print("table reloaded")
+            self.tableView.reloadData()
+        }
     }
+    
+    // Observes all messages
+//    func observeMessages() {
+//        Database.database().reference().child("messages").observe(DataEventType.childAdded, with: { (snapshot) in
+//            if let dictionary = snapshot.value as? [String: Any] {
+//                let message = ChatMessage()
+//                message.setValuesForKeys(dictionary)
+//                self.messages.append(message)
+//                if let recipientId = message.recipientId {
+//                    self.groupedMessages[recipientId] = message
+//                    self.messages = Array(self.groupedMessages.values)
+//                    self.messages.sort { $0.timestamp!.intValue > $1.timestamp!.intValue }
+//                }
+//
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }, withCancel: nil)
+//    }
     
     func handleLogout() {
         do {
