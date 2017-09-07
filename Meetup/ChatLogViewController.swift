@@ -57,8 +57,17 @@ class ChatLogViewController: UICollectionViewController {
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58, right: 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        collectionView?.keyboardDismissMode = .interactive
         setupInputContainerView()
+        setupKeyboardObservers()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        removeKeyboardObservers()
+    }
+    
+    var containerViewBottomAnchor: NSLayoutConstraint?
     
     func setupInputContainerView() {
         let containerView = UIView()
@@ -66,7 +75,11 @@ class ChatLogViewController: UICollectionViewController {
         containerView.backgroundColor = UIColor.white
         view.addSubview(containerView)
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+//        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        containerViewBottomAnchor = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        containerViewBottomAnchor?.isActive = true
+        
         containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
@@ -192,4 +205,32 @@ extension ChatLogViewController: UITextFieldDelegate {
         handleSend()
         return true
     }
+    
+    func setupKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func handleKeyboardWillShow(notification: NSNotification) {
+        let keyboardFrame = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? CGRect
+        let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
+        containerViewBottomAnchor?.constant = -keyboardFrame!.height
+        UIView.animate(withDuration: keyboardDuration!) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func handleKeyboardWillHide(notification: NSNotification) {
+        containerViewBottomAnchor?.constant = 0
+        let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
+        UIView.animate(withDuration: keyboardDuration!) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func removeKeyboardObservers() {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
+
+
