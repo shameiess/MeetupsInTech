@@ -161,9 +161,28 @@ extension ChatLogViewController: UICollectionViewDelegateFlowLayout {
         if message.senderId == Auth.auth().currentUser?.uid {
             //blue
             cell.bubbleView.backgroundColor = UIColor.chatBubbleBlueColor
+            cell.textView.textColor = UIColor.white
+            
+            // pin the bubble to the right
+            cell.bubbleViewRightAnchor?.isActive = true
+            cell.bubbleViewLeftAnchor?.isActive = false
+            
+            // hide image for sender
+            cell.profileImageView.isHidden = true
         } else {
+            // gray
             cell.bubbleView.backgroundColor = UIColor.chatBubbleGrayColor
             cell.textView.textColor = UIColor.black
+            
+            // pin the bubble to the left
+            cell.bubbleViewRightAnchor?.isActive = false
+            cell.bubbleViewLeftAnchor?.isActive = true
+        }
+        
+        // set chat partner's profile image
+        if let profileImageUrl = self.user?.profileImageURL {
+            let url = URL(string: profileImageUrl)
+            cell.profileImageView.kf.setImage(with: url)
         }
     }
 }
