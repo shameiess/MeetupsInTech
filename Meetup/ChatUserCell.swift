@@ -63,8 +63,6 @@ class ChatUserCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 35
         imageView.layer.masksToBounds = true
-        imageView.layer.borderColor = UIColor.cyan.cgColor
-        imageView.layer.borderWidth = 2
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
