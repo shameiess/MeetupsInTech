@@ -21,7 +21,7 @@ class YelpViewController: UIViewController {
 //    var headerView: UIView!
     var searchController : UISearchController!
     
-    var businesses: [Yelp.YelpBusiness] = [] {
+    var businesses: [YelpBusiness] = [] {
         didSet { DispatchQueue.main.async{ self.tableView.reloadData() } }
     }
     let networking = YelpClient.sharedInstance

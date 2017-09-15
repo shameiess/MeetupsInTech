@@ -11,16 +11,6 @@ import Foundation
 struct Yelp: Codable {
 
     var businesses: [YelpBusiness]
-
-    struct YelpBusiness: Codable {
-        var name: String?
-        var image_url: String?
-        var rating: Double?
-        var distance: Double?
-        var review_count: Int?
-//        var city: String?
-//        var zip_code: String?
-    }
     
     //    private enum CodingKeys: String, CodingKey {
     //        case name = "yelp_name"
@@ -31,11 +21,21 @@ struct Yelp: Codable {
     //    }
 }
 
- struct GroceryProduct: Codable {
- var name: String
- var points: Int
- var description: String
- }
+struct YelpBusiness: Codable {
+    var name: String?
+    var image_url: String?
+    var rating: Double?
+    var distance: Double?
+    var review_count: Int?
+    //        var city: String?
+    //        var zip_code: String?
+}
+
+// struct GroceryProduct: Codable {
+// var name: String
+// var points: Int
+// var description: String
+// }
 
 /*
  let decoder = JSONDecoder()
