@@ -96,6 +96,7 @@
 		735048FD1DD5003500AF2320 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		735049031DD65E1700AF2320 /* MeetupClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupClient.swift; sourceTree = "<group>"; };
 		735049061DD663C100AF2320 /* Meetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meetup.swift; sourceTree = "<group>"; };
+		736B039C1F79A25D00CAD6AE /* Meetup-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meetup-Bridging-Header.h"; sourceTree = "<group>"; };
 		7378A7DF1DDE49420023243C /* MeetupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupDetailViewController.swift; sourceTree = "<group>"; };
 		737F1C2B1F16B7F20043873B /* MeetupServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MeetupServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		737F1C2D1F16B7F20043873B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -198,6 +199,7 @@
 				735048FA1DD5003500AF2320 /* LaunchScreen.storyboard */,
 				735048FD1DD5003500AF2320 /* Info.plist */,
 				73B17C5F1F43501A003FAEFF /* GoogleService-Info.plist */,
+				736B039C1F79A25D00CAD6AE /* Meetup-Bridging-Header.h */,
 			);
 			path = Meetup;
 			sourceTree = "<group>";
@@ -651,13 +653,30 @@
 				CODE_SIGN_ENTITLEMENTS = Meetup/Meetup.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 84CK77G588;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseDatabase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
+					"\"${PODS_ROOT}/Headers/Public/OneSignal\"",
+				);
 				INFOPLIST_FILE = Meetup/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phunware.kmeetup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "${PODS_ROOT}/**";
 			};
 			name = Debug;
 		};
@@ -670,13 +689,30 @@
 				CODE_SIGN_ENTITLEMENTS = Meetup/Meetup.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 84CK77G588;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseDatabase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
+					"\"${PODS_ROOT}/Headers/Public/OneSignal\"",
+				);
 				INFOPLIST_FILE = Meetup/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phunware.kmeetup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "${PODS_ROOT}/**";
 			};
 			name = Release;
 		};

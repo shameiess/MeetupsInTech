@@ -27,8 +27,8 @@ class MapViewController: UIViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         if (CLLocationManager.authorizationStatus() == .notDetermined) {
-            locationManager.requestAlwaysAuthorization()
-            //locationManager.requestWhenInUseAuthorization()
+            //locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
         }
         locationManager.startUpdatingLocation()
         

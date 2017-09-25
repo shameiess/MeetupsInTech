@@ -10,7 +10,8 @@ target 'Meetup' do
   pod 'SideMenu'
   pod 'OneSignal', '>= 2.5.2', '< 3.0'
   pod 'SDWebImage'
-  pod 'Kingfisher'
+  pod 'Kingfisher', '= 3.10.4'
+  pod 'Shimmer'
   
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
