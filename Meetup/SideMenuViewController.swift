@@ -11,7 +11,7 @@ import SideMenu
 
 class SideMenuViewController: UITableViewController {
 
-    let items = ["Yelp","Second","Third","Fourth"]
+    let items = ["❗️Yelp","🔥 Firebase Chat", "👾 ARKit"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
