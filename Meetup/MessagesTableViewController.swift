@@ -64,28 +64,32 @@ class MessagesTableViewController: UITableViewController {
         // Get user-messages by current user
         let ref = Database.database().reference().child("user-messages").child(uid)
         ref.observe(.childAdded, with: { (snapshot) in
-            let messageId = snapshot.key
-            // Get message reference by message Id
-            let messageReference = Database.database().reference().child("messages").child(messageId)
-            messageReference.observe(.value, with: { (snapshot) in
-                if let dictionary = snapshot.value as? [String: Any] {
-                    let message = ChatMessage()
-                    message.setValuesForKeys(dictionary)
-                    self.messages.append(message)
-                    if let chatPartnerId = message.chatPartnerId() {
-                        self.groupedMessages[chatPartnerId] = message
-                        self.messages = Array(self.groupedMessages.values)
-                        self.messages.sort { $0.timestamp!.intValue > $1.timestamp!.intValue }
+            let userId = snapshot.key
+            
+            Database.database().reference().child("user-messages").child(uid).child(userId).observe(.childAdded, with: { (snapshot) in
+                let messageId = snapshot.key
+                // Get message reference by message Id
+                let messageReference = Database.database().reference().child("messages").child(messageId)
+                messageReference.observe(.value, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: Any] {
+                        let message = ChatMessage()
+                        message.setValuesForKeys(dictionary)
+                        self.messages.append(message)
+                        if let chatPartnerId = message.chatPartnerId() {
+                            self.groupedMessages[chatPartnerId] = message
+                        }
+                        self.timer?.invalidate()
+                        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
                     }
-                    
-                    self.timer?.invalidate()
-                    self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
-                }
+                }, withCancel: nil)
             }, withCancel: nil)
         }, withCancel: nil)
     }
     
     func handleReloadTable() {
+        self.messages = Array(self.groupedMessages.values)
+        self.messages.sort { $0.timestamp!.intValue > $1.timestamp!.intValue }
+        
         DispatchQueue.main.async {
             print("table reloaded")
             self.tableView.reloadData()
