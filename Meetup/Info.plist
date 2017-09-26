@@ -22,8 +22,18 @@
 	<string>Technology</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MeetupAPIKey</key>
+	<string>266354163543e605a2ee2a23306e4e</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Let us find what&apos;s around you</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Do you allow this app to know your current location?</string>
+	<string>Let us find what&apos;s around you</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Let us help you choose a profile picture</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -42,5 +52,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>YelpAPIKey</key>
+	<string>QAlfqNfTbjrRRQvniJfuTmy9gGv5yqbKWYWkc2cmPbSCQIzDlFHb6x0akZzSzPCQZCMzN26iunnnjVjEfYUW-e3VaybO34ky4DAgdKl0lm3Hf7I6crCbn2pa1Zd7WXYx</string>
+	<key>YelpClientID</key>
+	<string>ebyycRPlIjzGKEc74bSX-Q</string>
+	<key>YelpClientSecret</key>
+	<string>Hmk6wdMBHB0cvVWFZzzU1iLZV8uWguh6DeteRLZKzpqdgUtOpOgrjhMXBrrPCPDp</string>
 </dict>
 </plist>

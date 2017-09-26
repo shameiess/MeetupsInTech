@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import NotificationCenter
+import SideMenu
 
 class MapViewController: UIViewController {
     
@@ -19,14 +20,15 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         self.mapView.delegate = self
         self.mapView.showsUserLocation = true
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         if (CLLocationManager.authorizationStatus() == .notDetermined) {
-            locationManager.requestAlwaysAuthorization()
+            //locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
         }
         locationManager.startUpdatingLocation()
         
@@ -49,8 +51,8 @@ class MapViewController: UIViewController {
         let topic = notification.userInfo?["topic"]
         guard let lat = locationManager.location?.coordinate.latitude.description else {return}
         guard let lon = locationManager.location?.coordinate.longitude.description else {return}
-        let url = Meetup.meetupURLBuilder(lat: lat, lon: lon, topic: topic as! String)
-        MeetupClient.requestGETURL(url, success: {
+        let url = MeetupClient.sharedInstance.getMeetupsBy(topic: topic as! String, lat: lat, lon: lon)
+        MeetupClient.sharedInstance.get(url, success: {
             (JSONResponse) -> Void in
             self.meetups = Meetup.meetupsFromJSON(json: JSONResponse)!
             for meetup in self.meetups {
@@ -70,7 +72,7 @@ class MapViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "detailsMap") {
-            let nextView = segue.destination as! MeetupDetailTable
+            let nextView = segue.destination as! MeetupDetailViewController
             let annotation = sender as! CustomAnnotation
             nextView.meetup = annotation.meetup
         }
@@ -99,7 +101,9 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        performSegue(withIdentifier: "detailsMap", sender: view.annotation as? CustomAnnotation)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "detailsMap", sender: view.annotation as? CustomAnnotation)
+        }
     }
 }
 
@@ -113,9 +117,9 @@ extension MapViewController: CLLocationManagerDelegate {
         let lon = location.coordinate.longitude.description
         let topic = Bundle.main.infoDictionary?["Default Search Topic"] as! String
 
-        let url = Meetup.meetupURLBuilder(lat: lat, lon: lon, topic: topic)
+        let url = MeetupClient.sharedInstance.getMeetupsBy(topic: topic, lat: lat, lon: lon)
         
-        MeetupClient.requestGETURL(url, success: {
+        MeetupClient.sharedInstance.get(url, success: {
             (JSONResponse) -> Void in
             self.meetups = Meetup.meetupsFromJSON(json: JSONResponse)!
             for meetup in self.meetups {

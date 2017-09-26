@@ -14,6 +14,18 @@ extension Notification.Name {
     static let meetups = Notification.Name("meetups")
 }
 
+extension UIImageView{
+    
+    func setImageFromURL(url: String) {
+        
+        if let url = NSURL(string: url) {
+            if let data = NSData(contentsOf: url as URL) {
+                self.image = UIImage(data: data as Data)
+            }
+        }
+    }
+}
+
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
@@ -26,6 +38,9 @@ extension UIColor {
     convenience init(netHex:Int) {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
+    
+    static let chatBubbleBlueColor = UIColor(red: 50, green: 206, blue: 243)//UIColor(red: 21, green: 126, blue: 251)
+    static let chatBubbleGrayColor = UIColor(red: 241, green: 240, blue: 240)
 }
 
 extension Double {
@@ -55,5 +70,37 @@ extension String {
     }
     var html2String: String {
         return html2AttributedString?.string ?? ""
+    }
+}
+
+extension UIViewController {
+//    var showSideMenu: Bool
+//    if (self.showTrayButton && self.menu && !self.presentingViewController) {
+//    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"lefttray.button.png"] style:UIBarButtonItemStylePlain target:self action:@selector(onMenu:)];
+//    [menuButton setImageInsets:UIEdgeInsetsMake(0, -15, 0, -15)];
+//    self.navigationItem.leftBarButtonItem = menuButton;
+//    self.menuButton = menuButton;
+//    } else
+//    [self setupBackButton];
+
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+extension UIAlertController {
+    static func alertWithTitle(title: String, message: String, buttonTitle: String) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: buttonTitle, style: .cancel, handler: nil)
+        alertController.addAction(action)
+        
+        return alertController
     }
 }
