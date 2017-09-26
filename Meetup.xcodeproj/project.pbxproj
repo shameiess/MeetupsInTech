@@ -146,22 +146,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		73492ABE1F2B8CD8004C9C31 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				73492ABF1F2BBAEB004C9C31 /* SideMenuViewController.swift */,
-				73848B341F4353DB003300F6 /* LoginViewController.swift */,
-				734C262D1F44C8EC000EB09B /* ChatUser.swift */,
-				73B1C8B11F4F388800A9D7B7 /* ChatMessage.swift */,
-				734C262F1F44CD90000EB09B /* ChatUserCell.swift */,
-				73848B381F4396EC003300F6 /* MessagesTableViewController.swift */,
-				73B1C8B31F4F3EAD00A9D7B7 /* ChatUsersTableViewController.swift */,
-				73A79A871F4CB87C0095D11E /* ChatLogViewController.swift */,
-				7347D47E1F54C644005CF78E /* ChatMessageCell.swift */,
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
 		735048E51DD5003500AF2320 = {
 			isa = PBXGroup;
 			children = (
@@ -186,11 +170,11 @@
 			isa = PBXGroup;
 			children = (
 				737F1C381F16B94E0043873B /* Meetup.entitlements */,
-				73CAF6C31DDD40220065DA36 /* PulleyLib */,
 				73DA38A71F14161700814F16 /* Meetup */,
 				735049051DD65E2100AF2320 /* Yelp */,
+				738262021F7AEB0B007FB200 /* Firebase Chat */,
 				73DA38A81F14163400814F16 /* Extension */,
-				73492ABE1F2B8CD8004C9C31 /* ViewControllers */,
+				73492ABF1F2BBAEB004C9C31 /* SideMenuViewController.swift */,
 				735048F11DD5003500AF2320 /* AppDelegate.swift */,
 				735048F51DD5003500AF2320 /* Main.storyboard */,
 				735048F81DD5003500AF2320 /* Assets.xcassets */,
@@ -207,12 +191,9 @@
 		735049051DD65E2100AF2320 /* Yelp */ = {
 			isa = PBXGroup;
 			children = (
-				73492AC31F2BDA60004C9C31 /* YelpBusiness.swift */,
-				73492AC11F2BD38D004C9C31 /* YelpClient.swift */,
-				73ECD6BF1F2BE97100BD1639 /* YelpViewController.swift */,
-				7342990F1F3378440094AC20 /* YelpTableViewCell.swift */,
-				734299101F3378440094AC20 /* YelpTableViewCell.xib */,
-				73A4D4951F34F58200127A51 /* YelpRatingControl.swift */,
+				738262061F7AEC60007FB200 /* Model */,
+				738262071F7AEC75007FB200 /* View */,
+				738262081F7AEC89007FB200 /* Cell */,
 			);
 			name = Yelp;
 			sourceTree = "<group>";
@@ -227,11 +208,105 @@
 			path = MeetupServiceExtension;
 			sourceTree = "<group>";
 		};
+		738262021F7AEB0B007FB200 /* Firebase Chat */ = {
+			isa = PBXGroup;
+			children = (
+				738262031F7AEBA3007FB200 /* Model */,
+				738262041F7AEBB0007FB200 /* View */,
+				738262051F7AEBC3007FB200 /* Cell */,
+			);
+			name = "Firebase Chat";
+			sourceTree = "<group>";
+		};
+		738262031F7AEBA3007FB200 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				734C262D1F44C8EC000EB09B /* ChatUser.swift */,
+				73B1C8B11F4F388800A9D7B7 /* ChatMessage.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		738262041F7AEBB0007FB200 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				73848B341F4353DB003300F6 /* LoginViewController.swift */,
+				73848B381F4396EC003300F6 /* MessagesTableViewController.swift */,
+				73B1C8B31F4F3EAD00A9D7B7 /* ChatUsersTableViewController.swift */,
+				73A79A871F4CB87C0095D11E /* ChatLogViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		738262051F7AEBC3007FB200 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				734C262F1F44CD90000EB09B /* ChatUserCell.swift */,
+				7347D47E1F54C644005CF78E /* ChatMessageCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		738262061F7AEC60007FB200 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				73492AC31F2BDA60004C9C31 /* YelpBusiness.swift */,
+				73492AC11F2BD38D004C9C31 /* YelpClient.swift */,
+				73A4D4951F34F58200127A51 /* YelpRatingControl.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		738262071F7AEC75007FB200 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				73ECD6BF1F2BE97100BD1639 /* YelpViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		738262081F7AEC89007FB200 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7342990F1F3378440094AC20 /* YelpTableViewCell.swift */,
+				734299101F3378440094AC20 /* YelpTableViewCell.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		738262091F7AED0D007FB200 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				735049061DD663C100AF2320 /* Meetup.swift */,
+				730460B11DDBBDD300CBA259 /* CustomAnnotation.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7382620A1F7AED19007FB200 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				735049031DD65E1700AF2320 /* MeetupClient.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		7382620B1F7AED2F007FB200 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				73F2FB501DDD65DE00E6DC22 /* MapViewController.swift */,
+				7378A7DF1DDE49420023243C /* MeetupDetailViewController.swift */,
+				73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		73CAF6C31DDD40220065DA36 /* PulleyLib */ = {
 			isa = PBXGroup;
 			children = (
 				73CAF6C41DDD40360065DA36 /* PulleyViewController.swift */,
 				73CAF6C51DDD40360065DA36 /* PulleyPassthroughScrollView.swift */,
+				73CAF6C81DDD41380065DA36 /* DrawerContentViewController.swift */,
 			);
 			name = PulleyLib;
 			sourceTree = "<group>";
@@ -239,13 +314,10 @@
 		73DA38A71F14161700814F16 /* Meetup */ = {
 			isa = PBXGroup;
 			children = (
-				735049061DD663C100AF2320 /* Meetup.swift */,
-				735049031DD65E1700AF2320 /* MeetupClient.swift */,
-				730460B11DDBBDD300CBA259 /* CustomAnnotation.swift */,
-				73F2FB501DDD65DE00E6DC22 /* MapViewController.swift */,
-				73CAF6C81DDD41380065DA36 /* DrawerContentViewController.swift */,
-				7378A7DF1DDE49420023243C /* MeetupDetailViewController.swift */,
-				73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */,
+				73CAF6C31DDD40220065DA36 /* PulleyLib */,
+				738262091F7AED0D007FB200 /* Model */,
+				7382620A1F7AED19007FB200 /* API */,
+				7382620B1F7AED2F007FB200 /* View */,
 			);
 			name = Meetup;
 			sourceTree = "<group>";
