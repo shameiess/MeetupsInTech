@@ -19,8 +19,6 @@
 		73492AC41F2BDA60004C9C31 /* YelpBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73492AC31F2BDA60004C9C31 /* YelpBusiness.swift */; };
 		734C262E1F44C8EC000EB09B /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C262D1F44C8EC000EB09B /* ChatUser.swift */; };
 		734C26301F44CD90000EB09B /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C262F1F44CD90000EB09B /* ChatUserCell.swift */; };
-		734D54201F42146000004BA3 /* compass_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 734D541E1F42145F00004BA3 /* compass_background@2x.png */; };
-		734D54211F42146000004BA3 /* compass_spinner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 734D541F1F42146000004BA3 /* compass_spinner@2x.png */; };
 		735048F21DD5003500AF2320 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735048F11DD5003500AF2320 /* AppDelegate.swift */; };
 		735048F71DD5003500AF2320 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 735048F51DD5003500AF2320 /* Main.storyboard */; };
 		735048F91DD5003500AF2320 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 735048F81DD5003500AF2320 /* Assets.xcassets */; };
@@ -86,8 +84,6 @@
 		73492AC31F2BDA60004C9C31 /* YelpBusiness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpBusiness.swift; sourceTree = "<group>"; };
 		734C262D1F44C8EC000EB09B /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		734C262F1F44CD90000EB09B /* ChatUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
-		734D541E1F42145F00004BA3 /* compass_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "compass_background@2x.png"; path = "../../../Downloads/JackrabbitRefreshSwift-master/JackrabbitRefreshSwift/compass_background@2x.png"; sourceTree = "<group>"; };
-		734D541F1F42146000004BA3 /* compass_spinner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "compass_spinner@2x.png"; path = "../../../Downloads/JackrabbitRefreshSwift-master/JackrabbitRefreshSwift/compass_spinner@2x.png"; sourceTree = "<group>"; };
 		735048EE1DD5003500AF2320 /* Meetup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meetup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		735048F11DD5003500AF2320 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		735048F61DD5003500AF2320 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -178,8 +174,6 @@
 				735048F11DD5003500AF2320 /* AppDelegate.swift */,
 				735048F51DD5003500AF2320 /* Main.storyboard */,
 				735048F81DD5003500AF2320 /* Assets.xcassets */,
-				734D541E1F42145F00004BA3 /* compass_background@2x.png */,
-				734D541F1F42146000004BA3 /* compass_spinner@2x.png */,
 				735048FA1DD5003500AF2320 /* LaunchScreen.storyboard */,
 				735048FD1DD5003500AF2320 /* Info.plist */,
 				73B17C5F1F43501A003FAEFF /* GoogleService-Info.plist */,
@@ -195,7 +189,7 @@
 				738262071F7AEC75007FB200 /* View */,
 				738262081F7AEC89007FB200 /* Cell */,
 			);
-			name = Yelp;
+			path = Yelp;
 			sourceTree = "<group>";
 		};
 		737F1C2C1F16B7F20043873B /* MeetupServiceExtension */ = {
@@ -215,7 +209,7 @@
 				738262041F7AEBB0007FB200 /* View */,
 				738262051F7AEBC3007FB200 /* Cell */,
 			);
-			name = "Firebase Chat";
+			path = "Firebase Chat";
 			sourceTree = "<group>";
 		};
 		738262031F7AEBA3007FB200 /* Model */ = {
@@ -319,7 +313,7 @@
 				7382620A1F7AED19007FB200 /* API */,
 				7382620B1F7AED2F007FB200 /* View */,
 			);
-			name = Meetup;
+			path = Meetup;
 			sourceTree = "<group>";
 		};
 		73DA38A81F14163400814F16 /* Extension */ = {
@@ -457,8 +451,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				735048FC1DD5003500AF2320 /* LaunchScreen.storyboard in Resources */,
-				734D54211F42146000004BA3 /* compass_spinner@2x.png in Resources */,
-				734D54201F42146000004BA3 /* compass_background@2x.png in Resources */,
 				735048F91DD5003500AF2320 /* Assets.xcassets in Resources */,
 				735048F71DD5003500AF2320 /* Main.storyboard in Resources */,
 				734299121F3378440094AC20 /* YelpTableViewCell.xib in Resources */,
