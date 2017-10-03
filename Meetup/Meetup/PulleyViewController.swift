@@ -407,7 +407,7 @@ open class PulleyViewController: UIViewController, UIScrollViewDelegate, PulleyP
         let topic = searchBar.text
         NotificationCenter.default.post(name: .updateTopic, object: nil, userInfo: ["topic" : topic ?? ""])
         searchBar.resignFirstResponder()
-        self.title = "Meetups in + \(topic)"
+        self.title = nil
     }
     
     func centerMapByCurrentLocation(sender: UIBarButtonItem) {

@@ -37,7 +37,6 @@ class YelpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Hi Kevin")
         
         // MARK: Search Bar
         self.searchController = UISearchController(searchResultsController:  nil)
@@ -50,11 +49,10 @@ class YelpViewController: UIViewController {
         self.definesPresentationContext = true
         
         // MARK: Table View
-        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
         
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight - barHeight))
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
@@ -147,10 +145,25 @@ extension YelpViewController {
     func refresh(){
         // -- DO SOMETHING AWESOME (... or just wait 3 seconds) --
         // This is where you'll make requests to an API, reload data, or process information
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        // DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        //    self.refreshControl!.endRefreshing()
+        // }
+        // -- FINISHED SOMETHING AWESOME, WOO! --
+        networking.getYelpBusinesses(searchController.searchBar.text!) { (businesses, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            guard let yelpBusinesses = businesses else {
+                print("Error: Retreiving businesses")
+                return
+            }
+            self.businesses = yelpBusinesses
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
             self.refreshControl!.endRefreshing()
         }
-        // -- FINISHED SOMETHING AWESOME, WOO! --
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
