@@ -33,25 +33,15 @@ class SideMenuViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.row)!")
-        if (indexPath.row == 0) {
+        switch indexPath.row {
+        case 0:
             self.navigationController?.pushViewController(YelpViewController(), animated: true)
-        }
-        else {
-//            let messagesTableViewController = MessagesTableViewController()
-//            let navController = UINavigationController(rootViewController: messagesTableViewController)
-//            self.present(navController, animated: true, completion: nil)
+        case 1:
             self.navigationController?.pushViewController(MessagesTableViewController(), animated: true)
-//            self.present(MessagesTableViewController(), animated: true, completion: nil)
+        default:
+            let storyboard = UIStoryboard(name: "ARKit", bundle: nil)
+            let viewController = storyboard.instantiateInitialViewController()
+            self.present(viewController!, animated: true, completion: nil)
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

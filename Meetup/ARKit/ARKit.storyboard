@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gJI-EJ-PaQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment version="4352" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Kit View Controller-->
+        <scene sceneID="xzq-i7-0Ou">
+            <objects>
+                <viewController id="gJI-EJ-PaQ" customClass="ARKitViewController" customModule="Meetup" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oDj-pR-PVX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6n-ol-0zh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </arscnView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2T-OG-9zX">
+                                <rect key="frame" x="15" y="600" width="58.5" height="40"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dIs-PA-Iiw">
+                                    <rect key="frame" x="0.0" y="0.0" width="58.5" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwp-De-o08">
+                                            <rect key="frame" x="8" y="8" width="42.5" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="174" id="Kvk-Bz-AH1"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="oVg-C7-Tyl"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Fwp-De-o08" secondAttribute="bottom" constant="8" id="3Vz-gW-MCC"/>
+                                        <constraint firstAttribute="trailing" secondItem="Fwp-De-o08" secondAttribute="trailing" constant="8" id="Qru-4b-nAy"/>
+                                        <constraint firstItem="Fwp-De-o08" firstAttribute="top" secondItem="dIs-PA-Iiw" secondAttribute="top" constant="8" id="XG1-Ms-t0b"/>
+                                        <constraint firstItem="Fwp-De-o08" firstAttribute="leading" secondItem="dIs-PA-Iiw" secondAttribute="leading" constant="8" id="rWj-ou-c1X"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="AKO-Ws-MPI" firstAttribute="trailing" secondItem="Z6n-ol-0zh" secondAttribute="trailing" id="5g1-Qt-yAn"/>
+                            <constraint firstItem="AKO-Ws-MPI" firstAttribute="bottom" secondItem="Z6n-ol-0zh" secondAttribute="bottom" id="BOK-RT-Tvp"/>
+                            <constraint firstItem="Z6n-ol-0zh" firstAttribute="leading" secondItem="AKO-Ws-MPI" secondAttribute="leading" id="Gju-Rc-Cab"/>
+                            <constraint firstItem="e2T-OG-9zX" firstAttribute="leading" secondItem="AKO-Ws-MPI" secondAttribute="leading" constant="15" id="bE1-Mf-b89"/>
+                            <constraint firstItem="AKO-Ws-MPI" firstAttribute="bottom" secondItem="e2T-OG-9zX" secondAttribute="bottom" constant="27" id="uct-SD-dyN"/>
+                            <constraint firstAttribute="top" secondItem="Z6n-ol-0zh" secondAttribute="top" id="vdY-rA-v7b"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AKO-Ws-MPI"/>
+                    </view>
+                    <connections>
+                        <outlet property="backLabel" destination="Fwp-De-o08" id="Lun-br-Oay"/>
+                        <outlet property="sceneView" destination="Z6n-ol-0zh" id="C7B-5K-yDQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sRR-gK-PtY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-31.199999999999999" y="-32.833583208395808"/>
+        </scene>
+    </scenes>
+</document>
