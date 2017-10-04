@@ -10,79 +10,52 @@ import UIKit
 import Foundation
 import SDWebImage
 import Kingfisher
+import CoreLocation
 
 let cellIdentifier = "yelpTableViewCell"
-let headerHeight:CGFloat = 150.0
+// let headerHeight:CGFloat = 150.0
 
-class YelpViewController: UIViewController {
+class YelpViewController: UIViewController, LocationServiceDelegate {
     
     // MARK: UI
     @IBOutlet var tableView: UITableView!
-//    var headerView: UIView!
-    var searchController : UISearchController!
-    
-    var businesses: [YelpBusiness] = [] {
-        didSet { DispatchQueue.main.async{ self.tableView.reloadData() } }
-    }
-    let networking = YelpClient.sharedInstance
-    
-    var refreshControl : UIRefreshControl!
-    var refreshLoadingView : UIView!
-    var refreshColorView : UIView!
-    var compass_background : UIImageView!
-    var compass_spinner : UIImageView!
+    var searchController: UISearchController!
+    var refreshControl: UIRefreshControl!
+    var refreshLoadingView: UIView!
+    var refreshColorView: UIView!
+    var compass_background: UIImageView!
+    var compass_spinner: UIImageView!
     var isRefreshIconsOverlap = false
     var isRefreshAnimating = false
+    // var headerView: UIView!
     
+    var businesses: [YelpBusiness] = [] {
+        didSet {
+            DispatchQueue.main.async{ self.tableView.reloadData() }
+        }
+    }
+    
+    let networking = YelpClient.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // MARK: Search Bar
-        self.searchController = UISearchController(searchResultsController:  nil)
-        self.searchController.searchResultsUpdater = self
-        self.searchController.delegate = self
-        self.searchController.searchBar.delegate = self
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.dimsBackgroundDuringPresentation = false
-        self.navigationItem.titleView = searchController.searchBar
-        self.definesPresentationContext = true
-        
-        // MARK: Table View
-        let displayWidth: CGFloat = self.view.frame.width
-        let displayHeight: CGFloat = self.view.frame.height
-        
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight))
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.allowsSelection = false
-        tableView.register(UINib(nibName: "YelpTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        
-        self.view.addSubview(tableView)
-        
-        self.setupRefreshControl()
-        
-        /*
-        // MARK: Header View
-        headerView = UIView(frame: CGRect(x: 0, y: -(headerHeight+barHeight), width: displayWidth, height: headerHeight+barHeight))
-        headerView.backgroundColor = UIColor.cyan
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: headerHeight+barHeight))
-        imageView.image = #imageLiteral(resourceName: "Yelp_Logo.svg")
-        imageView.contentMode = .scaleAspectFill
-        headerView.addSubview(imageView)
-        self.tableView.addSubview(headerView)
-        self.tableView.contentInset = UIEdgeInsets(top: headerHeight+barHeight, left: 0, bottom: 0, right: 0)
 
-        func updateHeaderAlphaChanel() {
-            if ((self.headerView) != nil) {
-                let normalized = 1/self.headerView.frame.size.height
-                let offset = -self.tableView.contentOffset.y
-                self.headerView.alpha = normalized*offset
-            }
-        }
-        */
+        setupSearchController()
+        setupTableView()
+        setupRefreshControl()
+        // setupHeaderView()
         
-        networking.getYelpBusinesses("Pho") { (businesses, error) in
+        let locationManager = UserLocation.sharedInstance
+        locationManager.delegate = self
+        UserLocation.sharedInstance.startUpdatingLocation()
+    }
+    
+    func tracingLocation(currentLocation: CLLocation) {
+        let lat = currentLocation.coordinate.latitude
+        let lon = currentLocation.coordinate.longitude
+        print("lat : \(lat)")
+        print("lon : \(lon)")
+        networking.getYelpBusinesses(["term": searchController.searchBar.text ?? "Pho", "latitude": lat, "longitude": lon]) { (businesses, error) in
             if let error = error {
                 print(error)
                 return
@@ -92,12 +65,110 @@ class YelpViewController: UIViewController {
                 return
             }
             self.businesses = yelpBusinesses
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            DispatchQueue.main.async{
+                self.refreshControl!.endRefreshing()
             }
         }
+        UserLocation.sharedInstance.stopUpdatingLocation()
     }
     
+    func tracingLocationDidFailWithError(error: NSError) {
+        print("tracingLocationDidFailWithError: \(error.localizedDescription)")
+    }
+    
+    func setupTableView() {
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight))
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.allowsSelection = false
+        tableView.register(UINib(nibName: "YelpTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        self.view.addSubview(tableView)
+    }
+    
+    func setupSearchController() {
+        searchController = UISearchController(searchResultsController:  nil)
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
+        self.navigationItem.titleView = searchController.searchBar
+        self.definesPresentationContext = true
+    }
+    
+    /*
+    func setupHeaderView() {
+        headerView = UIView(frame: CGRect(x: 0, y: -(headerHeight+barHeight), width: displayWidth, height: headerHeight+barHeight))
+        headerView.backgroundColor = UIColor.cyan
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: headerHeight+barHeight))
+        imageView.image = #imageLiteral(resourceName: "Yelp_Logo.svg")
+        imageView.contentMode = .scaleAspectFill
+        headerView.addSubview(imageView)
+        self.tableView.addSubview(headerView)
+        self.tableView.contentInset = UIEdgeInsets(top: headerHeight+barHeight, left: 0, bottom: 0, right: 0)
+        
+        func updateHeaderAlphaChanel() {
+            if ((self.headerView) != nil) {
+                let normalized = 1/self.headerView.frame.size.height
+                let offset = -self.tableView.contentOffset.y
+                self.headerView.alpha = normalized*offset
+            }
+        }
+    }*/
+}
+
+extension YelpViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.businesses.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! YelpTableViewCell
+        
+        let yelp = self.businesses[indexPath.row]
+        
+        cell.nameLabel.text = "\(indexPath.row.description). \(yelp.name!)"
+        cell.mainImageView.layer.cornerRadius = 5
+        let url = URL(string: yelp.image_url!)
+        cell.mainImageView.kf.setImage(with: url, placeholder: UIImage(), options: [.transition(.fade(0.1))])
+        //cell.mainImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "strength_in_numbers_logo"), options: [.continueInBackground], completed: nil)
+        cell.distanceLabel.text = String(format: "%.1f mi", yelp.distance!)
+        cell.ratingStackView.starCount = Int(yelp.rating!)
+        cell.ratingStackView.rating = yelp.rating!
+        cell.reviewsLabel.text = String(format: "%d Reviews", yelp.review_count!)
+        
+        return cell
+    }
+    
+    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+
+    }
+}
+
+extension YelpViewController: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        networking.getYelpBusinesses(["term": searchBar.text!]) { (businesses, error) in
+//            self.businesses = businesses!
+//        }
+        UserLocation.sharedInstance.startUpdatingLocation()
+    }
 }
 
 // MARK: Refresh Control - https://www.jackrabbitmobile.com/app-development/ios-custom-pull-to-refresh-control/
@@ -149,21 +220,7 @@ extension YelpViewController {
         //    self.refreshControl!.endRefreshing()
         // }
         // -- FINISHED SOMETHING AWESOME, WOO! --
-        networking.getYelpBusinesses(searchController.searchBar.text!) { (businesses, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            guard let yelpBusinesses = businesses else {
-                print("Error: Retreiving businesses")
-                return
-            }
-            self.businesses = yelpBusinesses
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            self.refreshControl!.endRefreshing()
-        }
+        UserLocation.sharedInstance.startUpdatingLocation()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -272,60 +329,5 @@ extension YelpViewController {
         self.isRefreshIconsOverlap = false;
         self.refreshColorView.backgroundColor = UIColor.clear
     }
-    
 }
 
-extension YelpViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.businesses.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! YelpTableViewCell
-        
-        let yelp = self.businesses[indexPath.row]
-        
-        cell.nameLabel.text = "\(indexPath.row.description). \(yelp.name!)"
-        cell.mainImageView.layer.cornerRadius = 5
-        let url = URL(string: yelp.image_url!)
-        cell.mainImageView.kf.setImage(with: url, placeholder: UIImage(), options: [.transition(.fade(0.1))])
-        //cell.mainImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "strength_in_numbers_logo"), options: [.continueInBackground], completed: nil)
-        
-        cell.distanceLabel.text = String(format: "%.1f mi", yelp.distance!)
-        cell.ratingStackView.starCount = Int(yelp.rating!)
-        cell.ratingStackView.rating = yelp.rating!
-        cell.reviewsLabel.text = String(format: "%d Reviews", yelp.review_count!)
-        
-        return cell
-    }
-    
-    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-
-    }
-    
-}
-
-extension YelpViewController: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        networking.getYelpBusinesses(searchBar.text!) { (businesses, error) in
-            self.businesses = businesses!
-        }
-    }
-    
-}

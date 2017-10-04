@@ -9,11 +9,17 @@
 import UIKit
 
 class YelpClient: NSObject {
+    let baseURL = "https://api.yelp.com/v3/businesses/search?"
     
     static let sharedInstance = YelpClient()
     
-    func getYelpBusinesses(_ term: String, completionHandler: @escaping ([YelpBusiness]?, Error?) -> Void) {
-        let endpoint = "https://api.yelp.com/v3/businesses/search?term=\(term)&latitude=37.786882&longitude=-122.399972"
+    func getYelpBusinesses(_ parameters: [String: Any]?, completionHandler: @escaping ([YelpBusiness]?, Error?) -> Void) {
+        var endpoint = baseURL
+        if parameters != nil {
+            for (key, value) in parameters! {
+                endpoint += "&\(key)=\(value)"
+            }
+        }
         guard let url = URL(string: endpoint) else {
             let error = BackendError.urlError(reason: "Unable to construct url: \(endpoint)")
             completionHandler(nil, error)

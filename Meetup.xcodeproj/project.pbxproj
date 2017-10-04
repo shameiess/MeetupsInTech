@@ -25,6 +25,7 @@
 		735048FC1DD5003500AF2320 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 735048FA1DD5003500AF2320 /* LaunchScreen.storyboard */; };
 		735049041DD65E1700AF2320 /* MeetupClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735049031DD65E1700AF2320 /* MeetupClient.swift */; };
 		735049071DD663C100AF2320 /* Meetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735049061DD663C100AF2320 /* Meetup.swift */; };
+		7367B5891F8446AC00B0EF7B /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367B5881F8446AC00B0EF7B /* UserLocation.swift */; };
 		7378A7E01DDE49420023243C /* MeetupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7378A7DF1DDE49420023243C /* MeetupDetailViewController.swift */; };
 		737F1C2E1F16B7F20043873B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737F1C2D1F16B7F20043873B /* NotificationService.swift */; };
 		737F1C321F16B7F20043873B /* MeetupServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 737F1C2B1F16B7F20043873B /* MeetupServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -95,6 +96,7 @@
 		735048FD1DD5003500AF2320 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		735049031DD65E1700AF2320 /* MeetupClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupClient.swift; sourceTree = "<group>"; };
 		735049061DD663C100AF2320 /* Meetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meetup.swift; sourceTree = "<group>"; };
+		7367B5881F8446AC00B0EF7B /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		736B039C1F79A25D00CAD6AE /* Meetup-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meetup-Bridging-Header.h"; sourceTree = "<group>"; };
 		7378A7DF1DDE49420023243C /* MeetupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupDetailViewController.swift; sourceTree = "<group>"; };
 		737F1C2B1F16B7F20043873B /* MeetupServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MeetupServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -336,6 +338,7 @@
 		73DA38A81F14163400814F16 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				7367B5881F8446AC00B0EF7B /* UserLocation.swift */,
 				73F2FB4C1DDD605200E6DC22 /* Extensions.swift */,
 				73848B361F438949003300F6 /* Shakeable.swift */,
 			);
@@ -574,6 +577,7 @@
 				73CAF6C71DDD40360065DA36 /* PulleyPassthroughScrollView.swift in Sources */,
 				73F2FB511DDD65DE00E6DC22 /* MapViewController.swift in Sources */,
 				73848B371F438949003300F6 /* Shakeable.swift in Sources */,
+				7367B5891F8446AC00B0EF7B /* UserLocation.swift in Sources */,
 				73CAF6C91DDD41380065DA36 /* DrawerContentViewController.swift in Sources */,
 				7378A7E01DDE49420023243C /* MeetupDetailViewController.swift in Sources */,
 				73492AC01F2BBAEB004C9C31 /* SideMenuViewController.swift in Sources */,
