@@ -83,6 +83,7 @@ class YelpViewController: UIViewController, LocationServiceDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
+        tableView.keyboardDismissMode = .interactive
         tableView.register(UINib(nibName: "YelpTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         self.view.addSubview(tableView)
     }
@@ -94,6 +95,7 @@ class YelpViewController: UIViewController, LocationServiceDelegate {
         searchController.searchBar.delegate = self
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
+        UITextField.appearance(whenContainedInInstancesOf: [type(of: searchController.searchBar)]).tintColor = UIColor.darkGray
         self.navigationItem.titleView = searchController.searchBar
         self.definesPresentationContext = true
     }
