@@ -11,7 +11,7 @@ import SideMenu
 
 class SideMenuViewController: UITableViewController {
 
-    let items = ["❗️Yelp","🔥 Firebase Chat", "👾 ARKit"]
+    let items = ["❗️Yelp","🔥 Firebase Chat", "📝 CoreData NBA 🏀", "👾 ARKit"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,8 @@ class SideMenuViewController: UITableViewController {
             self.navigationController?.pushViewController(YelpViewController(), animated: true)
         case 1:
             self.navigationController?.pushViewController(MessagesTableViewController(), animated: true)
+        case 2:
+            self.navigationController?.pushViewController(WarriorsTableViewController(), animated: true)
         default:
             let storyboard = UIStoryboard(name: "ARKit", bundle: nil)
             let viewController = storyboard.instantiateInitialViewController()
