@@ -46,6 +46,7 @@
 		73CAF6C91DDD41380065DA36 /* DrawerContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6C81DDD41380065DA36 /* DrawerContentViewController.swift */; };
 		73EB70F01FBDFFAF000AEB1A /* WarriorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EB70EF1FBDFFAF000AEB1A /* WarriorsTableViewController.swift */; };
 		73EB70F21FBE1CF6000AEB1A /* NBAData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EB70F11FBE1CF6000AEB1A /* NBAData.swift */; };
+		73EB70F41FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EB70F31FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift */; };
 		73ECD6C01F2BE97200BD1639 /* YelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ECD6BF1F2BE97100BD1639 /* YelpViewController.swift */; };
 		73F2FB4D1DDD605200E6DC22 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F2FB4C1DDD605200E6DC22 /* Extensions.swift */; };
 		73F2FB511DDD65DE00E6DC22 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F2FB501DDD65DE00E6DC22 /* MapViewController.swift */; };
@@ -123,6 +124,7 @@
 		73CAF6C81DDD41380065DA36 /* DrawerContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentViewController.swift; sourceTree = "<group>"; };
 		73EB70EF1FBDFFAF000AEB1A /* WarriorsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarriorsTableViewController.swift; sourceTree = "<group>"; };
 		73EB70F11FBE1CF6000AEB1A /* NBAData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAData.swift; sourceTree = "<group>"; };
+		73EB70F31FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
 		73ECD6BF1F2BE97100BD1639 /* YelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpViewController.swift; sourceTree = "<group>"; };
 		73F2FB4C1DDD605200E6DC22 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		73F2FB501DDD65DE00E6DC22 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				73EB70EF1FBDFFAF000AEB1A /* WarriorsTableViewController.swift */,
+				73EB70F31FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift */,
 				73EB70F11FBE1CF6000AEB1A /* NBAData.swift */,
 			);
 			path = CoreData;
@@ -597,6 +600,7 @@
 				73CAF6C91DDD41380065DA36 /* DrawerContentViewController.swift in Sources */,
 				7378A7E01DDE49420023243C /* MeetupDetailViewController.swift in Sources */,
 				73492AC01F2BBAEB004C9C31 /* SideMenuViewController.swift in Sources */,
+				73EB70F41FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift in Sources */,
 				73A79A881F4CB87C0095D11E /* ChatLogViewController.swift in Sources */,
 				735048F21DD5003500AF2320 /* AppDelegate.swift in Sources */,
 				73B1C8B21F4F388800A9D7B7 /* ChatMessage.swift in Sources */,
