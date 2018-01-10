@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol CollapsibleTableViewHeaderDelegate {
+protocol CollapsibleTableViewHeaderDelegate: class {
     func toggleSection(_ header: CollapsibleTableViewHeader, section: Int)
 }
 
 class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
 
-    var delegate: CollapsibleTableViewHeaderDelegate?
-    var section: Int = 0
+    weak var delegate: CollapsibleTableViewHeaderDelegate?
     
+    var section: Int = 0
     var titleLabel = UILabel()
     var arrowLabel = UILabel()
     
