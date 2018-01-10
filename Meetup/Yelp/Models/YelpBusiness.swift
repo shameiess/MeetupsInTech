@@ -9,16 +9,7 @@
 import Foundation
 
 struct Yelp: Codable {
-
     var businesses: [YelpBusiness]
-    
-    //    private enum CodingKeys: String, CodingKey {
-    //        case name = "yelp_name"
-    //        case points = "yelp_image_url"
-    //        case address1
-    //        case city
-    //        case zip_code
-    //    }
 }
 
 struct YelpBusiness: Codable {
@@ -27,26 +18,7 @@ struct YelpBusiness: Codable {
     var rating: Double?
     var distance: Double?
     var review_count: Int?
-    //        var city: String?
-    //        var zip_code: String?
 }
-
-// struct GroceryProduct: Codable {
-// var name: String
-// var points: Int
-// var description: String
-// }
-
-/*
- let decoder = JSONDecoder()
- let products = try decoder.decode([GroceryProduct].self, from: json)
- 
- print("The following products are available:")
- for product in products {
- print("\t\(product.name) (\(product.points) points): \(product.description)")
- }
-
- */
 
 /*
  {
