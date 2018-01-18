@@ -25,7 +25,7 @@ struct Team {
 
 var teamsData: [Team] = [
     Team(name: "Warriors", players: [
-        Player(name: "Stephen Curren", number: "30"),
+        Player(name: "Stephen Curry", number: "30"),
         Player(name: "Kevin Durant", number: "35"),
         Player(name: "Klay Thompson", number: "11"),
         ]),
