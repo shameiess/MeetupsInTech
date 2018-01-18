@@ -11,25 +11,63 @@ import UIKit
 let nbaCellId = "nbaCellId"
 
 class WarriorsTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    let searchController = UISearchController(searchResultsController: nil)
+    var players = teamsData.flatMap{$0.players}
+    var filteredPlayers = [Player]()
 
+    // MARK: - View Setup
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "NBA"
+        
+        // Setup Table View
         tableView.estimatedRowHeight = 44.0
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: nbaCellId)
+        
+        // Setup the navigation
+        self.title = "NBA"
+//        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.isTranslucent = false
+        self.edgesForExtendedLayout = []
+        
+        // Setup the Search Controller
+        if #available(iOS 11.0, *) {
+            searchController.searchResultsUpdater = self
+            searchController.obscuresBackgroundDuringPresentation = false
+            searchController.searchBar.placeholder = "Search Players"
+            searchController.searchBar.tintColor = .white
+            navigationItem.searchController = searchController
+        } else {
+            tableView.tableHeaderView = searchController.searchBar
+        }
     }
-
+    
     // MARK: - Table view data source and delegate
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if isFiltering() {
+            return 1
+        }
         return teamsData.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering() {
+            return filteredPlayers.count
+        }
         return teamsData[section].collapsed ? 0 : teamsData[section].players.count
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if isFiltering() {
+        	return nil
+        }
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
         
         header.titleLabel.text = teamsData[section].name
@@ -43,9 +81,14 @@ class WarriorsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: nbaCellId, for: indexPath)
-
-        let player = teamsData[indexPath.section].players[indexPath.row]
         cell.textLabel?.numberOfLines = 0
+
+        if isFiltering() {
+            let player = filteredPlayers[indexPath.row]
+            cell.textLabel?.text = "\(player.name)\n\(player.number)"
+            return cell
+        }
+        let player = teamsData[indexPath.section].players[indexPath.row]
         cell.textLabel?.text = "\(player.name)\n\(player.number)"
 
         return cell
@@ -62,6 +105,15 @@ class WarriorsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 2
     }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && (!searchBarIsEmpty())
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -107,6 +159,20 @@ class WarriorsTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension WarriorsTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    // MARK: - Private instance methods
+    func filterContentForSearchText(_ searchText: String) {
+        filteredPlayers = players.filter({ (player: Player) -> Bool in
+        	return player.name.lowercased().contains(searchText.lowercased())
+        })
+        tableView.reloadData()
+    }
 }
 
 extension WarriorsTableViewController: CollapsibleTableViewHeaderDelegate {
