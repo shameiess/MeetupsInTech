@@ -14,12 +14,63 @@ class WarriorsTableViewController: UITableViewController {
     
     // MARK: - Properties
     let searchController = UISearchController(searchResultsController: nil)
-    var players = teamsData.flatMap{$0.players}
-    var filteredPlayers = [Player]()
+//    var players = teamsData.flatMap{$0.players}
+    
+    var nbaplayers = [NBAPlayer]()
+    var nbateams = [NBATeam]()
+    var nbateamsconfig = [NBATeamConfig]()
+    var nbaFranchise: [NBAFranchise] = []
+    
+    var filteredPlayers = [NBAPlayer]()
 
+    func buildTeamsData() {
+        for team in nbateams {
+            let teamGroup = NBAFranchise(name: team, players: nbaplayers.filter{ $0.teamId == team.teamId})
+            nbaFranchise.append(teamGroup)
+        }
+    }
+    
+    private func getNBAData() {
+        let playersPath = Bundle.main.path(forResource: "players", ofType: "json")
+        let playersURL = URL(fileURLWithPath: playersPath!)
+        do {
+            let data = try Data(contentsOf: playersURL)
+            let response = try JSONDecoder().decode(PlayersFeed.self, from: data)
+            nbaplayers = response.league.players
+        } catch {
+            print(error)
+        }
+        
+        let teamsPath = Bundle.main.path(forResource: "teams", ofType: "json")
+        let teamsURL = URL(fileURLWithPath: teamsPath!)
+        do {
+            let data = try Data(contentsOf: teamsURL)
+            let response = try JSONDecoder().decode(TeamsFeed.self, from: data)
+            nbateams = response.league.teams.filter{ $0.isNBAFranchise == true}
+        } catch {
+            print(error)
+        }
+        
+        let teamsConfigPath = Bundle.main.path(forResource: "teams_config", ofType: "json")
+        let teamsConfigURL = URL(fileURLWithPath: teamsConfigPath!)
+        do {
+            let data = try Data(contentsOf: teamsConfigURL)
+            let response = try JSONDecoder().decode(TeamsConfigFeed.self, from: data)
+            nbateamsconfig = response.teams.teamConfigs
+        } catch {
+            print(error)
+        }
+    }
+    
     // MARK: - View Setup
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getNBAData()
+        
+        if (nbaplayers.count > 0 && nbateams.count > 0) {
+            buildTeamsData()
+        }
         
         // Setup Table View
         tableView.estimatedRowHeight = 44.0
@@ -32,7 +83,7 @@ class WarriorsTableViewController: UITableViewController {
         
         // Setup the navigation
         self.title = "NBA"
-//        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.isTranslucent = false
         self.edgesForExtendedLayout = []
         
@@ -54,14 +105,14 @@ class WarriorsTableViewController: UITableViewController {
         if isFiltering() {
             return 1
         }
-        return teamsData.count
+        return nbaFranchise.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             return filteredPlayers.count
         }
-        return teamsData[section].collapsed ? 0 : teamsData[section].players.count
+        return nbaFranchise[section].collapsed ? 0 : nbaFranchise[section].players.count
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -70,9 +121,13 @@ class WarriorsTableViewController: UITableViewController {
         }
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
         
-        header.titleLabel.text = teamsData[section].name
+        header.titleLabel.text = nbaFranchise[section].name.fullName
+        
+        if let teamColor = nbateamsconfig.first(where: { $0.teamId == nbaFranchise[section].name.teamId }) {
+        	header.contentView.backgroundColor = UIColor(hexString: teamColor.primaryColor)
+        }
         header.arrowLabel.text = ">"
-        header.setCollapsed(teamsData[section].collapsed)
+        header.setCollapsed(nbaFranchise[section].collapsed)
         
         header.section = section
         header.delegate = self
@@ -85,11 +140,11 @@ class WarriorsTableViewController: UITableViewController {
 
         if isFiltering() {
             let player = filteredPlayers[indexPath.row]
-            cell.textLabel?.text = "\(player.name)\n\(player.number)"
+            cell.textLabel?.text = "\(player.name)\n\(player.jersey)"
             return cell
         }
-        let player = teamsData[indexPath.section].players[indexPath.row]
-        cell.textLabel?.text = "\(player.name)\n\(player.number)"
+        let player = nbaFranchise[indexPath.section].players[indexPath.row]
+        cell.textLabel?.text = "\(player.name)\n\(player.jersey)"
 
         return cell
     }
@@ -168,7 +223,7 @@ extension WarriorsTableViewController: UISearchResultsUpdating {
     
     // MARK: - Private instance methods
     func filterContentForSearchText(_ searchText: String) {
-        filteredPlayers = players.filter({ (player: Player) -> Bool in
+        filteredPlayers = nbaplayers.filter({ (player: NBAPlayer) -> Bool in
         	return player.name.lowercased().contains(searchText.lowercased())
         })
         tableView.reloadData()
@@ -177,7 +232,7 @@ extension WarriorsTableViewController: UISearchResultsUpdating {
 
 extension WarriorsTableViewController: CollapsibleTableViewHeaderDelegate {
     func toggleSection(_ header: CollapsibleTableViewHeader, section: Int) {
-        teamsData[section].collapsed = !teamsData[section].collapsed
+        nbaFranchise[section].collapsed = !nbaFranchise[section].collapsed
         
         tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
     }

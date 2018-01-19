@@ -11,8 +11,12 @@
 		672FEF3F057A44FD64CC3E55 /* Pods_MeetupServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C4535B5E414720B0411463 /* Pods_MeetupServiceExtension.framework */; };
 		730460AE1DDBB9AD00CBA259 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 730460AD1DDBB9AD00CBA259 /* MapKit.framework */; };
 		730460B21DDBBDD300CBA259 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730460B11DDBBDD300CBA259 /* CustomAnnotation.swift */; };
+		7314022C2011383700C3F89A /* teams.json in Resources */ = {isa = PBXBuildFile; fileRef = 7314022B2011383700C3F89A /* teams.json */; };
+		7314022E201150B500C3F89A /* teams_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 7314022D201150B500C3F89A /* teams_config.json */; };
 		734299111F3378440094AC20 /* YelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342990F1F3378440094AC20 /* YelpTableViewCell.swift */; };
 		734299121F3378440094AC20 /* YelpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 734299101F3378440094AC20 /* YelpTableViewCell.xib */; };
+		7346125420042D2700212FC0 /* players.json in Resources */ = {isa = PBXBuildFile; fileRef = 7346125320042D2600212FC0 /* players.json */; };
+		734612562004369A00212FC0 /* NBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734612552004369A00212FC0 /* NBA.swift */; };
 		7347D47F1F54C644005CF78E /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7347D47E1F54C644005CF78E /* ChatMessageCell.swift */; };
 		73492AC01F2BBAEB004C9C31 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73492ABF1F2BBAEB004C9C31 /* SideMenuViewController.swift */; };
 		73492AC21F2BD38D004C9C31 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73492AC11F2BD38D004C9C31 /* YelpClient.swift */; };
@@ -83,8 +87,12 @@
 		4CCE95F6099AADB596FE0E55 /* Pods-Meetup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meetup.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Meetup/Pods-Meetup.debug.xcconfig"; sourceTree = "<group>"; };
 		730460AD1DDBB9AD00CBA259 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		730460B11DDBBDD300CBA259 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		7314022B2011383700C3F89A /* teams.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teams.json; sourceTree = "<group>"; };
+		7314022D201150B500C3F89A /* teams_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teams_config.json; sourceTree = "<group>"; };
 		7342990F1F3378440094AC20 /* YelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpTableViewCell.swift; sourceTree = "<group>"; };
 		734299101F3378440094AC20 /* YelpTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YelpTableViewCell.xib; sourceTree = "<group>"; };
+		7346125320042D2600212FC0 /* players.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = players.json; sourceTree = "<group>"; };
+		734612552004369A00212FC0 /* NBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBA.swift; sourceTree = "<group>"; };
 		7347D47E1F54C644005CF78E /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		73492ABF1F2BBAEB004C9C31 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		73492AC11F2BD38D004C9C31 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
@@ -356,9 +364,13 @@
 		73EB70EE1FBDFED9000AEB1A /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				7346125320042D2600212FC0 /* players.json */,
+				7314022B2011383700C3F89A /* teams.json */,
+				7314022D201150B500C3F89A /* teams_config.json */,
+				734612552004369A00212FC0 /* NBA.swift */,
+				73EB70F11FBE1CF6000AEB1A /* NBAData.swift */,
 				73EB70EF1FBDFFAF000AEB1A /* WarriorsTableViewController.swift */,
 				73EB70F31FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift */,
-				73EB70F11FBE1CF6000AEB1A /* NBAData.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -488,10 +500,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7314022E201150B500C3F89A /* teams_config.json in Resources */,
+				7314022C2011383700C3F89A /* teams.json in Resources */,
 				735048FC1DD5003500AF2320 /* LaunchScreen.storyboard in Resources */,
 				735048F91DD5003500AF2320 /* Assets.xcassets in Resources */,
 				73B826AA1F7C03560039973D /* ARKit.storyboard in Resources */,
 				73B826BB1F7C068A0039973D /* art.scnassets in Resources */,
+				7346125420042D2700212FC0 /* players.json in Resources */,
 				735048F71DD5003500AF2320 /* Main.storyboard in Resources */,
 				734299121F3378440094AC20 /* YelpTableViewCell.xib in Resources */,
 				73B17C601F43501A003FAEFF /* GoogleService-Info.plist in Resources */,
@@ -599,6 +614,7 @@
 				7367B5891F8446AC00B0EF7B /* UserLocation.swift in Sources */,
 				73CAF6C91DDD41380065DA36 /* DrawerContentViewController.swift in Sources */,
 				7378A7E01DDE49420023243C /* MeetupDetailViewController.swift in Sources */,
+				734612562004369A00212FC0 /* NBA.swift in Sources */,
 				73492AC01F2BBAEB004C9C31 /* SideMenuViewController.swift in Sources */,
 				73EB70F41FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift in Sources */,
 				73A79A881F4CB87C0095D11E /* ChatLogViewController.swift in Sources */,
@@ -778,7 +794,7 @@
 					"\"${PODS_ROOT}/Headers/Public/OneSignal\"",
 				);
 				INFOPLIST_FILE = Meetup/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phunware.kmeetup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -814,7 +830,7 @@
 					"\"${PODS_ROOT}/Headers/Public/OneSignal\"",
 				);
 				INFOPLIST_FILE = Meetup/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phunware.kmeetup;
 				PRODUCT_NAME = "$(TARGET_NAME)";

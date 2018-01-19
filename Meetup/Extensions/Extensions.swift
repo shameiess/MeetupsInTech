@@ -39,6 +39,24 @@ extension UIColor {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
     
+    convenience init(hexString:String) {
+        var colorString:String = hexString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        if (colorString.hasPrefix("#")) {
+            colorString.remove(at: colorString.startIndex)
+        }
+
+        var rgbValue:UInt32 = 0
+        Scanner(string: colorString).scanHexInt32(&rgbValue)
+        
+        self.init(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+    
     static let chatBubbleBlueColor = UIColor(red: 50, green: 206, blue: 243)//UIColor(red: 21, green: 126, blue: 251)
     static let chatBubbleGrayColor = UIColor(red: 241, green: 240, blue: 240)
 }

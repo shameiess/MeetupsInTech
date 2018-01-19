@@ -33,3 +33,15 @@ var teamsData: [Team] = [
         Player(name: "Lonzo Ball", number: "2")
         ])
 ]
+
+struct NBAFranchise {
+    var name: NBATeam
+    var players: [NBAPlayer]
+    var collapsed: Bool
+    
+    init(name: NBATeam, players: [NBAPlayer], collapsed: Bool = true) {
+        self.name = name
+        self.players = players
+        self.collapsed = collapsed
+    }
+}
