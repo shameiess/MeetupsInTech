@@ -30,7 +30,7 @@ class WarriorsTableViewController: UITableViewController {
         }
     }
     
-    private func getNBAData() {
+    func getNBAData() {
         let playersPath = Bundle.main.path(forResource: "players", ofType: "json")
         let playersURL = URL(fileURLWithPath: playersPath!)
         do {

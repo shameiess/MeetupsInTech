@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.5.1)
+  - Firebase (4.6.0):
+    - Firebase/Core (= 4.6.0)
   - Firebase/Auth (4.6.0):
     - Firebase/Core
     - FirebaseAuth (= 4.3.2)
@@ -55,12 +57,12 @@ PODS:
   - SDWebImage (4.2.2):
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
-  - Shimmer (1.0.2)
   - SideMenu (3.1.4)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - Firebase
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -69,7 +71,6 @@ DEPENDENCIES:
   - LifetimeTracker
   - OneSignal (< 3.0, >= 2.5.2)
   - SDWebImage
-  - Shimmer
   - SideMenu
   - SwiftyJSON
 
@@ -85,15 +86,14 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   Kingfisher: dc3a4983e86d2dfa89513664983a82340c11a289
-  leveldb-library: 4f9eedf84ab46b4fa3b7893bf30714b2a1a74022
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   LifetimeTracker: 53e73d11ec4d2454f31764117e701788309b1f45
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   OneSignal: 5be2eb3394e654b7467a190fe4d58147fc46bb78
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
-  Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SideMenu: 99021e70b3f2eee65b5dd88e4274d09031b1221e
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: cabd3ed9b926dd365075003220b2e77ed0c30e81
+PODFILE CHECKSUM: daea17696748a0252d07d7dec1ad20f3b8145605
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

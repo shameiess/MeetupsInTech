@@ -11,14 +11,18 @@ target 'Meetup' do
   pod 'OneSignal', '>= 2.5.2', '< 3.0'
   pod 'SDWebImage'
   pod 'Kingfisher', '= 3.10.4'
-  pod 'Shimmer'
-  
+
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   
   pod 'LifetimeTracker'
+  
+  target 'MeetupTests' do
+      inherit! :search_paths
+      pod 'Firebase'
+  end
   
 end
 
