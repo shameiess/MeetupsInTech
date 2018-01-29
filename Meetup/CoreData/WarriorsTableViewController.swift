@@ -73,6 +73,7 @@ class WarriorsTableViewController: UITableViewController {
         }
         
         // Setup Table View
+        tableView.backgroundColor = .black
         tableView.estimatedRowHeight = 44.0
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -147,6 +148,19 @@ class WarriorsTableViewController: UITableViewController {
         cell.textLabel?.text = "\(player.name)\n\(player.jersey)"
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if isFiltering() {
+            let player = filteredPlayers[indexPath.row]
+        }
+        let player = nbaFranchise[indexPath.section].players[indexPath.row]
+        
+        let playerProfileVC = PlayerProfileViewController()
+        playerProfileVC.player = player
+        self.navigationController?.pushViewController(playerProfileVC, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2DAD0621A42AB7941266BA5D /* Pods_Meetup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D742FE69B7D4EEB96634DC46 /* Pods_Meetup.framework */; };
 		672FEF3F057A44FD64CC3E55 /* Pods_MeetupServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C4535B5E414720B0411463 /* Pods_MeetupServiceExtension.framework */; };
+		730238C8201BED1200FDE671 /* PlayerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730238C7201BED1200FDE671 /* PlayerProfileViewController.swift */; };
+		730238CA201BEF0F00FDE671 /* PlayerProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730238C9201BEF0F00FDE671 /* PlayerProfileViewController.xib */; };
 		730460AE1DDBB9AD00CBA259 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 730460AD1DDBB9AD00CBA259 /* MapKit.framework */; };
 		730460B21DDBBDD300CBA259 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730460B11DDBBDD300CBA259 /* CustomAnnotation.swift */; };
 		7314022C2011383700C3F89A /* teams.json in Resources */ = {isa = PBXBuildFile; fileRef = 7314022B2011383700C3F89A /* teams.json */; };
@@ -85,6 +87,8 @@
 		26C4535B5E414720B0411463 /* Pods_MeetupServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetupServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2749F28D77EBBBFB5ADF446F /* Pods-MeetupServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetupServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetupServiceExtension/Pods-MeetupServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		4CCE95F6099AADB596FE0E55 /* Pods-Meetup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meetup.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Meetup/Pods-Meetup.debug.xcconfig"; sourceTree = "<group>"; };
+		730238C7201BED1200FDE671 /* PlayerProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProfileViewController.swift; sourceTree = "<group>"; };
+		730238C9201BEF0F00FDE671 /* PlayerProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerProfileViewController.xib; sourceTree = "<group>"; };
 		730460AD1DDBB9AD00CBA259 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		730460B11DDBBDD300CBA259 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		7314022B2011383700C3F89A /* teams.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teams.json; sourceTree = "<group>"; };
@@ -370,6 +374,8 @@
 				734612552004369A00212FC0 /* NBA.swift */,
 				73EB70F11FBE1CF6000AEB1A /* NBAData.swift */,
 				73EB70EF1FBDFFAF000AEB1A /* WarriorsTableViewController.swift */,
+				730238C7201BED1200FDE671 /* PlayerProfileViewController.swift */,
+				730238C9201BEF0F00FDE671 /* PlayerProfileViewController.xib */,
 				73EB70F31FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift */,
 			);
 			path = CoreData;
@@ -502,6 +508,7 @@
 			files = (
 				7314022E201150B500C3F89A /* teams_config.json in Resources */,
 				7314022C2011383700C3F89A /* teams.json in Resources */,
+				730238CA201BEF0F00FDE671 /* PlayerProfileViewController.xib in Resources */,
 				735048FC1DD5003500AF2320 /* LaunchScreen.storyboard in Resources */,
 				735048F91DD5003500AF2320 /* Assets.xcassets in Resources */,
 				73B826AA1F7C03560039973D /* ARKit.storyboard in Resources */,
@@ -616,6 +623,7 @@
 				7378A7E01DDE49420023243C /* MeetupDetailViewController.swift in Sources */,
 				734612562004369A00212FC0 /* NBA.swift in Sources */,
 				73492AC01F2BBAEB004C9C31 /* SideMenuViewController.swift in Sources */,
+				730238C8201BED1200FDE671 /* PlayerProfileViewController.swift in Sources */,
 				73EB70F41FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift in Sources */,
 				73A79A881F4CB87C0095D11E /* ChatLogViewController.swift in Sources */,
 				735048F21DD5003500AF2320 /* AppDelegate.swift in Sources */,
