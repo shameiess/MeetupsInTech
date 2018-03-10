@@ -55,7 +55,7 @@ class YelpViewController: UIViewController, LocationServiceDelegate {
         let lon = currentLocation.coordinate.longitude
         print("lat : \(lat)")
         print("lon : \(lon)")
-        networking.getYelpBusinesses(["term": searchController.searchBar.text ?? "Pho", "latitude": lat, "longitude": lon]) { (businesses, error) in
+        networking.getYelpBusinesses(["term": searchController.searchBar.text ?? "Pho", "latitude": lat, "longitude": lon]) { [weak self] (businesses, error) in
             if let error = error {
                 print(error)
                 return
@@ -64,9 +64,9 @@ class YelpViewController: UIViewController, LocationServiceDelegate {
                 print("Error: Retreiving businesses")
                 return
             }
-            self.businesses = yelpBusinesses
+            self?.businesses = yelpBusinesses
             DispatchQueue.main.async{
-                self.refreshControl!.endRefreshing()
+                self?.refreshControl!.endRefreshing()
             }
         }
         UserLocation.sharedInstance.stopUpdatingLocation()
