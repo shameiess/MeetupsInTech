@@ -135,7 +135,7 @@
 		73848B381F4396EC003300F6 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 		73A4D4951F34F58200127A51 /* YelpRatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpRatingControl.swift; sourceTree = "<group>"; };
 		73A79A871F4CB87C0095D11E /* ChatLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewController.swift; sourceTree = "<group>"; };
-		73B17C5F1F43501A003FAEFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		73B17C5F1F43501A003FAEFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73B1C8B11F4F388800A9D7B7 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		73B1C8B31F4F3EAD00A9D7B7 /* ChatUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersTableViewController.swift; sourceTree = "<group>"; };
 		73B66B0B201FC3C3009BAB43 /* MeetupTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeetupTests-Bridging-Header.h"; sourceTree = "<group>"; };
