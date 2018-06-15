@@ -22,6 +22,8 @@ class WarriorsTableViewController: UITableViewController {
     var nbaFranchise: [NBAFranchise] = []
     
     var filteredPlayers = [NBAPlayer]()
+    
+    var actualTeams = [NBATeam]()
 
     func buildTeamsData() {
         for team in nbateams {
@@ -30,48 +32,30 @@ class WarriorsTableViewController: UITableViewController {
         }
     }
     
-    func getNBAData() {
-        let playersPath = Bundle.main.path(forResource: "players", ofType: "json")
-        let playersURL = URL(fileURLWithPath: playersPath!)
-        do {
-            let data = try Data(contentsOf: playersURL)
-            let response = try JSONDecoder().decode(PlayersFeed.self, from: data)
-            nbaplayers = response.league.players
-        } catch {
-            print(error)
-        }
-        
-        let teamsPath = Bundle.main.path(forResource: "teams", ofType: "json")
-        let teamsURL = URL(fileURLWithPath: teamsPath!)
-        do {
-            let data = try Data(contentsOf: teamsURL)
-            let response = try JSONDecoder().decode(TeamsFeed.self, from: data)
-            nbateams = response.league.teams.filter{ $0.isNBAFranchise == true}
-        } catch {
-            print(error)
-        }
-        
-        let teamsConfigPath = Bundle.main.path(forResource: "teams_config", ofType: "json")
-        let teamsConfigURL = URL(fileURLWithPath: teamsConfigPath!)
-        do {
-            let data = try Data(contentsOf: teamsConfigURL)
-            let response = try JSONDecoder().decode(TeamsConfigFeed.self, from: data)
-            nbateamsconfig = response.teams.teamConfigs
-        } catch {
-            print(error)
-        }
-    }
-    
     // MARK: - View Setup
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getNBAData()
-        
-        if (nbaplayers.count > 0 && nbateams.count > 0) {
-            buildTeamsData()
+//        NBAMock().getNBAData { (players, teams, teamConfigs) in
+//            nbaplayers = players
+//            nbateams = teams
+//            nbateamsconfig = teamConfigs
+//        }
+//
+//        if (nbaplayers.count > 0 && nbateams.count > 0 && nbateamsconfig.count > 0) {
+//            buildTeamsData()
+//        }
+                
+        NBADataManager().getNBAData { (players, teams, teamConfigs) in
+            self.nbaplayers = players
+            self.nbateams = teams
+            self.nbateamsconfig = teamConfigs
+            DispatchQueue.main.async {
+                self.buildTeamsData()
+                self.tableView.reloadData()
+            }
         }
-        
+
         // Setup Table View
         tableView.backgroundColor = .black
         tableView.estimatedRowHeight = 44.0
