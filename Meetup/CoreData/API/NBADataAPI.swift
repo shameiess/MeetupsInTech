@@ -88,13 +88,13 @@ class NBADataAPI: NSObject {
         })
     }
     
-//    func fetchPlayer(personId: String, success: @escaping (Any?) -> Void, failure: @escaping (Error) -> Void) {
-//        NetworkRequester().requestForCodable(Router.player(personId: personId), success: { (feed: Any?) in
-//            success(feed)
-//        }, failure: { (error) in
-//            failure(error)
-//        })
-//    }
+    func fetchPlayer(personId: String, success: @escaping (NBAPlayerProfile?) -> Void, failure: @escaping (Error) -> Void) {
+        NetworkRequester().requestForCodable(Router.player(personId: personId), success: { (feed: NBAPlayerProfile?) in
+            success(feed)
+        }, failure: { (error) in
+            failure(error)
+        })
+    }
     
     func fetchTeams(success: @escaping (NBATeamsFeed?) -> Void, failure: @escaping (Error) -> Void) {
         NetworkRequester().requestForCodable(Router.teams(parameters: [:]), success: { (feed: NBATeamsFeed?) in

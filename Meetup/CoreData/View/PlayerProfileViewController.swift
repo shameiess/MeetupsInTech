@@ -11,6 +11,7 @@ import UIKit
 class PlayerProfileViewController: UIViewController {
     
     var player: NBAPlayer?
+    var playerProfile: NBAPlayerProfile?
     
     let segmentedControl = UISegmentedControl(items: ["Latest", "Career", "Season"])
     let segmentedButtonBar = UIView()
@@ -18,6 +19,17 @@ class PlayerProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = player?.name
+        
+//        NBAMock().getKevinDurantProfile { (kevin) in
+//            print(kevin)
+//        }
+        if let player = player {
+            NBADataAPI().fetchPlayer(personId: player.personId, success: { [weak self] (profile) in
+                self?.playerProfile = profile
+            }) { (error) in
+                print(error)
+            }
+        }
         
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false

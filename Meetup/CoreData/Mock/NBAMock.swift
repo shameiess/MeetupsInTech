@@ -48,4 +48,17 @@ class NBAMock: NSObject {
         
         completion(nbaplayers, nbateams, nbateamsconfig)
     }
+    
+    func getKevinDurantProfile(completion: @escaping ((NBAPlayerProfile) -> ())) {
+        let teamsConfigPath = Bundle.main.path(forResource: "201142_profile", ofType: "json")
+        let teamsConfigURL = URL(fileURLWithPath: teamsConfigPath!)
+        do {
+            let data = try Data(contentsOf: teamsConfigURL)
+            let response = try JSONDecoder().decode(NBAPlayerProfile.self, from: data)
+            print(response)
+            completion(response)
+        } catch {
+            print(error)
+        }
+    }
 }

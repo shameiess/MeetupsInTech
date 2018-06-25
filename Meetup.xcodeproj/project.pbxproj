@@ -17,6 +17,8 @@
 		7314022C2011383700C3F89A /* teams.json in Resources */ = {isa = PBXBuildFile; fileRef = 7314022B2011383700C3F89A /* teams.json */; };
 		7314022E201150B500C3F89A /* teams_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 7314022D201150B500C3F89A /* teams_config.json */; };
 		733AEE0520D31DFB007DFFE0 /* NBADataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733AEE0420D31DFB007DFFE0 /* NBADataManager.swift */; };
+		733AEE0820D33C66007DFFE0 /* 201142_profile.json in Resources */ = {isa = PBXBuildFile; fileRef = 733AEE0720D33C66007DFFE0 /* 201142_profile.json */; };
+		733AEE0A20D33D24007DFFE0 /* NBAPlayerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733AEE0920D33D24007DFFE0 /* NBAPlayerProfile.swift */; };
 		734299111F3378440094AC20 /* YelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342990F1F3378440094AC20 /* YelpTableViewCell.swift */; };
 		734299121F3378440094AC20 /* YelpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 734299101F3378440094AC20 /* YelpTableViewCell.xib */; };
 		7346125420042D2700212FC0 /* players.json in Resources */ = {isa = PBXBuildFile; fileRef = 7346125320042D2600212FC0 /* players.json */; };
@@ -108,6 +110,8 @@
 		7314022B2011383700C3F89A /* teams.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teams.json; sourceTree = "<group>"; };
 		7314022D201150B500C3F89A /* teams_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teams_config.json; sourceTree = "<group>"; };
 		733AEE0420D31DFB007DFFE0 /* NBADataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBADataManager.swift; sourceTree = "<group>"; };
+		733AEE0720D33C66007DFFE0 /* 201142_profile.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 201142_profile.json; sourceTree = "<group>"; };
+		733AEE0920D33D24007DFFE0 /* NBAPlayerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAPlayerProfile.swift; sourceTree = "<group>"; };
 		7342990F1F3378440094AC20 /* YelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpTableViewCell.swift; sourceTree = "<group>"; };
 		734299101F3378440094AC20 /* YelpTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YelpTableViewCell.xib; sourceTree = "<group>"; };
 		7346125320042D2600212FC0 /* players.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = players.json; sourceTree = "<group>"; };
@@ -280,8 +284,9 @@
 		737C3BB120D3196A00C7D7E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				737C3BA920D2EA0000C7D7E4 /* NBATeamsFeed.swift */,
 				737C3BAB20D2EC0800C7D7E4 /* NBAPlayersFeed.swift */,
+				733AEE0920D33D24007DFFE0 /* NBAPlayerProfile.swift */,
+				737C3BA920D2EA0000C7D7E4 /* NBATeamsFeed.swift */,
 				737C3BAD20D2EC2500C7D7E4 /* NBATeamsConfigFeed.swift */,
 				73EB70F11FBE1CF6000AEB1A /* NBAFranchise.swift */,
 			);
@@ -294,6 +299,7 @@
 				7346125320042D2600212FC0 /* players.json */,
 				7314022B2011383700C3F89A /* teams.json */,
 				7314022D201150B500C3F89A /* teams_config.json */,
+				733AEE0720D33C66007DFFE0 /* 201142_profile.json */,
 				737C3BA720D2E5D100C7D7E4 /* NBAMock.swift */,
 			);
 			path = Mock;
@@ -630,6 +636,7 @@
 				73B826BB1F7C068A0039973D /* art.scnassets in Resources */,
 				7346125420042D2700212FC0 /* players.json in Resources */,
 				735048F71DD5003500AF2320 /* Main.storyboard in Resources */,
+				733AEE0820D33C66007DFFE0 /* 201142_profile.json in Resources */,
 				734299121F3378440094AC20 /* YelpTableViewCell.xib in Resources */,
 				73B17C601F43501A003FAEFF /* GoogleService-Info.plist in Resources */,
 			);
@@ -830,6 +837,7 @@
 				73A79A881F4CB87C0095D11E /* ChatLogViewController.swift in Sources */,
 				735048F21DD5003500AF2320 /* AppDelegate.swift in Sources */,
 				737C3BA820D2E5D100C7D7E4 /* NBAMock.swift in Sources */,
+				733AEE0A20D33D24007DFFE0 /* NBAPlayerProfile.swift in Sources */,
 				73B1C8B21F4F388800A9D7B7 /* ChatMessage.swift in Sources */,
 				735049041DD65E1700AF2320 /* MeetupClient.swift in Sources */,
 				73B826AD1F7C04310039973D /* ARKitViewController.swift in Sources */,
