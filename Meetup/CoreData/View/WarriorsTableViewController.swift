@@ -137,11 +137,13 @@ class WarriorsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if isFiltering() {
-            let player = filteredPlayers[indexPath.row]
-        }
-        let player = nbaFranchise[indexPath.section].players[indexPath.row]
+        var player: NBAPlayer?
         
+        if isFiltering() {
+            player = filteredPlayers[indexPath.row]
+        } else {
+        	player = nbaFranchise[indexPath.section].players[indexPath.row]
+        }
         let playerProfileVC = PlayerProfileViewController()
         playerProfileVC.player = player
         self.navigationController?.pushViewController(playerProfileVC, animated: true)

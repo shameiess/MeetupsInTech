@@ -91,6 +91,14 @@ extension String {
     }
 }
 
+extension Dictionary {
+    subscript(index: Int) -> (key: Key, value: Value?) {
+        get {
+            return (Array(self)[index].key, Array(self)[index].value)
+        }
+    }
+}
+
 extension UIViewController {
 //    var showSideMenu: Bool
 //    if (self.showTrayButton && self.menu && !self.presentingViewController) {

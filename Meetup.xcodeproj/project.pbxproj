@@ -14,6 +14,8 @@
 		730238CA201BEF0F00FDE671 /* PlayerProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730238C9201BEF0F00FDE671 /* PlayerProfileViewController.xib */; };
 		730460AE1DDBB9AD00CBA259 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 730460AD1DDBB9AD00CBA259 /* MapKit.framework */; };
 		730460B21DDBBDD300CBA259 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730460B11DDBBDD300CBA259 /* CustomAnnotation.swift */; };
+		730F56D420F427EB008EEE12 /* StatsCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 730F56D320F427EB008EEE12 /* StatsCollectionViewController.storyboard */; };
+		730F56D620F4298D008EEE12 /* StatsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730F56D520F4298D008EEE12 /* StatsCollectionViewController.swift */; };
 		7314022C2011383700C3F89A /* teams.json in Resources */ = {isa = PBXBuildFile; fileRef = 7314022B2011383700C3F89A /* teams.json */; };
 		7314022E201150B500C3F89A /* teams_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 7314022D201150B500C3F89A /* teams_config.json */; };
 		733AEE0520D31DFB007DFFE0 /* NBADataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733AEE0420D31DFB007DFFE0 /* NBADataManager.swift */; };
@@ -36,6 +38,7 @@
 		735049071DD663C100AF2320 /* Meetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735049061DD663C100AF2320 /* Meetup.swift */; };
 		7367B5891F8446AC00B0EF7B /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367B5881F8446AC00B0EF7B /* UserLocation.swift */; };
 		7378A7E01DDE49420023243C /* MeetupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7378A7DF1DDE49420023243C /* MeetupDetailViewController.swift */; };
+		737B4E5A20F40C6100D176FE /* PropertyLoopable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737B4E5920F40C6100D176FE /* PropertyLoopable.swift */; };
 		737C3BA820D2E5D100C7D7E4 /* NBAMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3BA720D2E5D100C7D7E4 /* NBAMock.swift */; };
 		737C3BAA20D2EA0000C7D7E4 /* NBATeamsFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3BA920D2EA0000C7D7E4 /* NBATeamsFeed.swift */; };
 		737C3BAC20D2EC0800C7D7E4 /* NBAPlayersFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3BAB20D2EC0800C7D7E4 /* NBAPlayersFeed.swift */; };
@@ -55,6 +58,9 @@
 		73B826AA1F7C03560039973D /* ARKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B826A91F7C03560039973D /* ARKit.storyboard */; };
 		73B826AD1F7C04310039973D /* ARKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B826AB1F7C04310039973D /* ARKitViewController.swift */; };
 		73B826BB1F7C068A0039973D /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 73B826BA1F7C068A0039973D /* art.scnassets */; };
+		73BC56C920EECFEB00852598 /* StatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC56C720EECFEB00852598 /* StatsTableViewController.swift */; };
+		73BC56CA20EECFEB00852598 /* StatsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73BC56C820EECFEB00852598 /* StatsTableViewController.xib */; };
+		73BC56CC20EED9C500852598 /* BarSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC56CB20EED9C500852598 /* BarSegmentedControl.swift */; };
 		73CAF6C01DDC44D00065DA36 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */; };
 		73CAF6C61DDD40360065DA36 /* PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6C41DDD40360065DA36 /* PulleyViewController.swift */; };
 		73CAF6C71DDD40360065DA36 /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAF6C51DDD40360065DA36 /* PulleyPassthroughScrollView.swift */; };
@@ -107,6 +113,8 @@
 		730238C9201BEF0F00FDE671 /* PlayerProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerProfileViewController.xib; sourceTree = "<group>"; };
 		730460AD1DDBB9AD00CBA259 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		730460B11DDBBDD300CBA259 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		730F56D320F427EB008EEE12 /* StatsCollectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StatsCollectionViewController.storyboard; sourceTree = "<group>"; };
+		730F56D520F4298D008EEE12 /* StatsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCollectionViewController.swift; sourceTree = "<group>"; };
 		7314022B2011383700C3F89A /* teams.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teams.json; sourceTree = "<group>"; };
 		7314022D201150B500C3F89A /* teams_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teams_config.json; sourceTree = "<group>"; };
 		733AEE0420D31DFB007DFFE0 /* NBADataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBADataManager.swift; sourceTree = "<group>"; };
@@ -134,6 +142,7 @@
 		7367B5881F8446AC00B0EF7B /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		736B039C1F79A25D00CAD6AE /* Meetup-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meetup-Bridging-Header.h"; sourceTree = "<group>"; };
 		7378A7DF1DDE49420023243C /* MeetupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupDetailViewController.swift; sourceTree = "<group>"; };
+		737B4E5920F40C6100D176FE /* PropertyLoopable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyLoopable.swift; sourceTree = "<group>"; };
 		737C3BA720D2E5D100C7D7E4 /* NBAMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAMock.swift; sourceTree = "<group>"; };
 		737C3BA920D2EA0000C7D7E4 /* NBATeamsFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBATeamsFeed.swift; sourceTree = "<group>"; };
 		737C3BAB20D2EC0800C7D7E4 /* NBAPlayersFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAPlayersFeed.swift; sourceTree = "<group>"; };
@@ -157,6 +166,9 @@
 		73B826A91F7C03560039973D /* ARKit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ARKit.storyboard; sourceTree = "<group>"; };
 		73B826AB1F7C04310039973D /* ARKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitViewController.swift; sourceTree = "<group>"; };
 		73B826BA1F7C068A0039973D /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		73BC56C720EECFEB00852598 /* StatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewController.swift; sourceTree = "<group>"; };
+		73BC56C820EECFEB00852598 /* StatsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsTableViewController.xib; sourceTree = "<group>"; };
+		73BC56CB20EED9C500852598 /* BarSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSegmentedControl.swift; sourceTree = "<group>"; };
 		73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		73CAF6C41DDD40360065DA36 /* PulleyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyViewController.swift; sourceTree = "<group>"; };
 		73CAF6C51DDD40360065DA36 /* PulleyPassthroughScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyPassthroughScrollView.swift; sourceTree = "<group>"; };
@@ -210,9 +222,14 @@
 			isa = PBXGroup;
 			children = (
 				73EB70EF1FBDFFAF000AEB1A /* WarriorsTableViewController.swift */,
+				73EB70F31FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift */,
 				730238C7201BED1200FDE671 /* PlayerProfileViewController.swift */,
 				730238C9201BEF0F00FDE671 /* PlayerProfileViewController.xib */,
-				73EB70F31FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift */,
+				73BC56CB20EED9C500852598 /* BarSegmentedControl.swift */,
+				73BC56C720EECFEB00852598 /* StatsTableViewController.swift */,
+				73BC56C820EECFEB00852598 /* StatsTableViewController.xib */,
+				730F56D520F4298D008EEE12 /* StatsCollectionViewController.swift */,
+				730F56D320F427EB008EEE12 /* StatsCollectionViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -455,6 +472,7 @@
 				7367B5881F8446AC00B0EF7B /* UserLocation.swift */,
 				73F2FB4C1DDD605200E6DC22 /* Extensions.swift */,
 				73848B361F438949003300F6 /* Shakeable.swift */,
+				737B4E5920F40C6100D176FE /* PropertyLoopable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -628,6 +646,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7314022E201150B500C3F89A /* teams_config.json in Resources */,
+				73BC56CA20EECFEB00852598 /* StatsTableViewController.xib in Resources */,
 				7314022C2011383700C3F89A /* teams.json in Resources */,
 				730238CA201BEF0F00FDE671 /* PlayerProfileViewController.xib in Resources */,
 				735048FC1DD5003500AF2320 /* LaunchScreen.storyboard in Resources */,
@@ -639,6 +658,7 @@
 				733AEE0820D33C66007DFFE0 /* 201142_profile.json in Resources */,
 				734299121F3378440094AC20 /* YelpTableViewCell.xib in Resources */,
 				73B17C601F43501A003FAEFF /* GoogleService-Info.plist in Resources */,
+				730F56D420F427EB008EEE12 /* StatsCollectionViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,12 +845,15 @@
 				73B1C8B41F4F3EAD00A9D7B7 /* ChatUsersTableViewController.swift in Sources */,
 				73EB70F01FBDFFAF000AEB1A /* WarriorsTableViewController.swift in Sources */,
 				73CAF6C71DDD40360065DA36 /* PulleyPassthroughScrollView.swift in Sources */,
+				737B4E5A20F40C6100D176FE /* PropertyLoopable.swift in Sources */,
+				73BC56CC20EED9C500852598 /* BarSegmentedControl.swift in Sources */,
 				737C3BAC20D2EC0800C7D7E4 /* NBAPlayersFeed.swift in Sources */,
 				73F2FB511DDD65DE00E6DC22 /* MapViewController.swift in Sources */,
 				73848B371F438949003300F6 /* Shakeable.swift in Sources */,
 				7367B5891F8446AC00B0EF7B /* UserLocation.swift in Sources */,
 				73CAF6C91DDD41380065DA36 /* DrawerContentViewController.swift in Sources */,
 				7378A7E01DDE49420023243C /* MeetupDetailViewController.swift in Sources */,
+				730F56D620F4298D008EEE12 /* StatsCollectionViewController.swift in Sources */,
 				73492AC01F2BBAEB004C9C31 /* SideMenuViewController.swift in Sources */,
 				730238C8201BED1200FDE671 /* PlayerProfileViewController.swift in Sources */,
 				73EB70F41FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift in Sources */,
@@ -844,6 +867,7 @@
 				73848B391F4396EC003300F6 /* MessagesTableViewController.swift in Sources */,
 				734C26301F44CD90000EB09B /* ChatUserCell.swift in Sources */,
 				735049071DD663C100AF2320 /* Meetup.swift in Sources */,
+				73BC56C920EECFEB00852598 /* StatsTableViewController.swift in Sources */,
 				73F2FB4D1DDD605200E6DC22 /* Extensions.swift in Sources */,
 				737C3BAA20D2EA0000C7D7E4 /* NBATeamsFeed.swift in Sources */,
 				737C3BAE20D2EC2500C7D7E4 /* NBATeamsConfigFeed.swift in Sources */,

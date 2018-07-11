@@ -28,7 +28,7 @@ public struct Stats: Codable {
     let regularSeason: RegularSeason
 }
 
-public struct CareerSummary: Codable {
+public struct CareerSummary: Codable, PropertyLoopable {
     let tpp, ftp, fgp, ppg: String
     let rpg, apg, bpg, mpg: String
     let spg, assists, blocks, steals: String
