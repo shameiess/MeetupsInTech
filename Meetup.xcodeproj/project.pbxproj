@@ -49,6 +49,10 @@
 		73848B351F4353DB003300F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73848B341F4353DB003300F6 /* LoginViewController.swift */; };
 		73848B371F438949003300F6 /* Shakeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73848B361F438949003300F6 /* Shakeable.swift */; };
 		73848B391F4396EC003300F6 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73848B381F4396EC003300F6 /* MessagesTableViewController.swift */; };
+		7394145621220BA7004C28E6 /* ClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7394145521220BA7004C28E6 /* ClassificationViewController.swift */; };
+		7394145821220BBA004C28E6 /* Classification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7394145721220BBA004C28E6 /* Classification.storyboard */; };
+		7394145A21221C76004C28E6 /* CarRecognition.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7394145921221C76004C28E6 /* CarRecognition.mlmodel */; };
+		7394145C21221D2A004C28E6 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7394145B21221D2A004C28E6 /* MobileNet.mlmodel */; };
 		73A4D4961F34F58200127A51 /* YelpRatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A4D4951F34F58200127A51 /* YelpRatingControl.swift */; };
 		73A79A881F4CB87C0095D11E /* ChatLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A79A871F4CB87C0095D11E /* ChatLogViewController.swift */; };
 		73B17C601F43501A003FAEFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B17C5F1F43501A003FAEFF /* GoogleService-Info.plist */; };
@@ -156,6 +160,10 @@
 		73848B341F4353DB003300F6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		73848B361F438949003300F6 /* Shakeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shakeable.swift; sourceTree = "<group>"; };
 		73848B381F4396EC003300F6 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
+		7394145521220BA7004C28E6 /* ClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationViewController.swift; sourceTree = "<group>"; };
+		7394145721220BBA004C28E6 /* Classification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Classification.storyboard; sourceTree = "<group>"; };
+		7394145921221C76004C28E6 /* CarRecognition.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CarRecognition.mlmodel; sourceTree = "<group>"; };
+		7394145B21221D2A004C28E6 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		73A4D4951F34F58200127A51 /* YelpRatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpRatingControl.swift; sourceTree = "<group>"; };
 		73A79A871F4CB87C0095D11E /* ChatLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewController.swift; sourceTree = "<group>"; };
 		73B17C5F1F43501A003FAEFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -263,8 +271,9 @@
 				73DA38A71F14161700814F16 /* Meetup */,
 				735049051DD65E2100AF2320 /* Yelp */,
 				738262021F7AEB0B007FB200 /* Firebase Chat */,
-				73B826A81F7C030B0039973D /* ARKit */,
 				73EB70EE1FBDFED9000AEB1A /* CoreData */,
+				73B826A81F7C030B0039973D /* ARKit */,
+				7394145421220ADA004C28E6 /* CoreML */,
 				73DA38A81F14163400814F16 /* Extensions */,
 				73492ABF1F2BBAEB004C9C31 /* SideMenuViewController.swift */,
 				735048F11DD5003500AF2320 /* AppDelegate.swift */,
@@ -432,6 +441,17 @@
 				73CAF6BF1DDC44D00065DA36 /* CommentsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7394145421220ADA004C28E6 /* CoreML */ = {
+			isa = PBXGroup;
+			children = (
+				7394145521220BA7004C28E6 /* ClassificationViewController.swift */,
+				7394145721220BBA004C28E6 /* Classification.storyboard */,
+				7394145921221C76004C28E6 /* CarRecognition.mlmodel */,
+				7394145B21221D2A004C28E6 /* MobileNet.mlmodel */,
+			);
+			path = CoreML;
 			sourceTree = "<group>";
 		};
 		73B826A81F7C030B0039973D /* ARKit */ = {
@@ -657,6 +677,7 @@
 				735048F71DD5003500AF2320 /* Main.storyboard in Resources */,
 				733AEE0820D33C66007DFFE0 /* 201142_profile.json in Resources */,
 				734299121F3378440094AC20 /* YelpTableViewCell.xib in Resources */,
+				7394145821220BBA004C28E6 /* Classification.storyboard in Resources */,
 				73B17C601F43501A003FAEFF /* GoogleService-Info.plist in Resources */,
 				730F56D420F427EB008EEE12 /* StatsCollectionViewController.storyboard in Resources */,
 			);
@@ -851,13 +872,16 @@
 				73F2FB511DDD65DE00E6DC22 /* MapViewController.swift in Sources */,
 				73848B371F438949003300F6 /* Shakeable.swift in Sources */,
 				7367B5891F8446AC00B0EF7B /* UserLocation.swift in Sources */,
+				7394145C21221D2A004C28E6 /* MobileNet.mlmodel in Sources */,
 				73CAF6C91DDD41380065DA36 /* DrawerContentViewController.swift in Sources */,
+				7394145A21221C76004C28E6 /* CarRecognition.mlmodel in Sources */,
 				7378A7E01DDE49420023243C /* MeetupDetailViewController.swift in Sources */,
 				730F56D620F4298D008EEE12 /* StatsCollectionViewController.swift in Sources */,
 				73492AC01F2BBAEB004C9C31 /* SideMenuViewController.swift in Sources */,
 				730238C8201BED1200FDE671 /* PlayerProfileViewController.swift in Sources */,
 				73EB70F41FBE2C59000AEB1A /* CollapsibleTableViewHeader.swift in Sources */,
 				73A79A881F4CB87C0095D11E /* ChatLogViewController.swift in Sources */,
+				7394145621220BA7004C28E6 /* ClassificationViewController.swift in Sources */,
 				735048F21DD5003500AF2320 /* AppDelegate.swift in Sources */,
 				737C3BA820D2E5D100C7D7E4 /* NBAMock.swift in Sources */,
 				733AEE0A20D33D24007DFFE0 /* NBAPlayerProfile.swift in Sources */,
@@ -1054,7 +1078,7 @@
 					"\"${PODS_ROOT}/Headers/Public/OneSignal\"",
 				);
 				INFOPLIST_FILE = Meetup/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phunware.kmeetup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1090,7 +1114,7 @@
 					"\"${PODS_ROOT}/Headers/Public/OneSignal\"",
 				);
 				INFOPLIST_FILE = Meetup/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phunware.kmeetup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
